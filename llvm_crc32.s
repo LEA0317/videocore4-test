@@ -301,11 +301,10 @@ crc32:                                  # @crc32
 	nop
 # %bb.3:                                # %.preheader
 	mov	%r3, 0
-	mov	%r2, -1 # long
-	lea	%r4, crc_table(%pc) # PCrel load
-	b	LBB1_4
                                         # implicit-def: $r5
-	nop
+	b	LBB1_4
+	lea	%r4, crc_table(%pc) # PCrel load
+	mov	%r2, -1 # long
 	nop
 LBB1_6:                                 #   in Loop: Header=BB1_4 Depth=1
 	lsl	%r6, 3 # short
