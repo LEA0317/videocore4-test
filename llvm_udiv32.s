@@ -5,7 +5,7 @@
 	.type	udiv32,@function
 udiv32:                                 # @udiv32
 # %bb.0:
-	sub	%sp, 96 # short
+	sub	%sp, 100 # short
 	mov	%r7, 0
 	st	%r8, 84 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 92 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -427,7 +427,7 @@ udiv32:                                 # @udiv32
 	ld	%r7, 88 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r6, 92 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 96 # short
+	add	%sp, 100 # short
 	mov	%r0, %r2 # fast
 	nop
 Lfunc_end0:
@@ -438,50 +438,38 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 24 # short
+	sub	%sp, 12 # short
 	mov	%r2, 0
 	lea	%r3, z(%pc) # PCrel load
 	lea	%r5, d(%pc) # PCrel load
 	lea	%r4, q(%pc) # PCrel load
-	st	%r6, 20 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r7, 16 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r8, 12 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	mov	%r6, %r2 # fast
-	mov	%r7, %r2 # fast
+	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 LBB1_1:                                 # =>This Inner Loop Header: Depth=1
-	ld	%r0, (%r3, %r2)
+	mov	%r0, %r2 # fast
+	mov	%r1, %r2 # fast
+	add	%r0, %r3 # short
+	add	%r1, %r5 # short
 	bl	udiv32
-	ld	%r1, (%r5, %r2)
-	nop
-	nop
-	add	%r7, 1 # short
-	add	%r6, %r1 # short
-	mov	%r1, 0
-	cmp	%r7, %r2 # fast
-	movcs	%r1, 1
-	mov	%r8, %r7 # fast
-	st	%r0, (%r4, %r2)
-	eor	%r8, 1024 # long
-	or	%r8, %r6 # short
-	cmp	%r8, 0 # long imm
+	ld	%r1, (%r1)
+	ld	%r0, (%r0)
+	sub	%sp, 4 # short
+	mov	%r1, %r2 # fast
+	add	%r2, 4 # short
+	add	%r1, %r4 # short
+	cmp	%r2, 4096 # long imm
 	beq	LBB1_2
-	mov	%r2, %r7 # fast
-	nop
+	st	%r0, (%r1)
+	add	%sp, 4 # short
 	nop
 	b	LBB1_1
 	nop
 	nop
 	nop
 # %bb.2:
-	ld	%r0, (%r4)
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r8, 12 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r7, 16 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r6, 20 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 24 # short
-	nop
+	add	%sp, 12 # short
+	ld	%r0, (%r4)
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
@@ -489,21 +477,21 @@ Lfunc_end1:
 	.type	z,@object               # @z
 	.data
 	.globl	z
-	.p2align	4
+	.p2align	2
 z:
 	.zero	4096
 	.size	z, 4096
 
 	.type	d,@object               # @d
 	.globl	d
-	.p2align	4
+	.p2align	2
 d:
 	.zero	4096
 	.size	d, 4096
 
 	.type	q,@object               # @q
 	.globl	q
-	.p2align	4
+	.p2align	2
 q:
 	.zero	4096
 	.size	q, 4096

@@ -5,16 +5,24 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 12 # short
-	lea	%r0, dst(%pc) # PCrel load
-	bl	memset
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	mov	%r2, 4096 # long
-	mov	%r1, 1
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	b	%lr
-	add	%sp, 12 # short
 	mov	%r0, 0
+	lea	%r1, dst(%pc) # PCrel load
+	mov	%r2, 1
+	sub	%sp, 4 # short
+LBB0_1:                                 # %loadstoreloop
+                                        # =>This Inner Loop Header: Depth=1
+	stb	%r2, (%r0, %r1)
+	add	%r0, 1 # short
+	cmp	%r0, 4096 # long imm
+	bcs	LBB0_1
+	nop
+	nop
+	nop
+# %bb.2:                                # %split
+	mov	%r0, 0
+	b	%lr
+	add	%sp, 4 # short
+	nop
 	nop
 Lfunc_end0:
 	.size	main, Lfunc_end0-main
@@ -22,7 +30,7 @@ Lfunc_end0:
 	.type	dst,@object             # @dst
 	.data
 	.globl	dst
-	.p2align	4
+	.p2align	2
 dst:
 	.zero	4096
 	.size	dst, 4096

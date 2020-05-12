@@ -5,7 +5,7 @@
 	.type	test_movx_1,@function
 test_movx_1:                            # @test_movx_1
 # %bb.0:
-	sub	%sp, 4 # short
+	sub	%sp, 8 # short
 	mov	%r1, 1
 	mov	%r3, 0
 	mov	%r0, 3
@@ -14,7 +14,7 @@ test_movx_1:                            # @test_movx_1
 	cmp	%r2, %r3 # fast
 	b	%lr
 	moveq	%r0, %r1
-	add	%sp, 4 # short
+	add	%sp, 8 # short
 	nop
 Lfunc_end0:
 	.size	test_movx_1, Lfunc_end0-test_movx_1
@@ -25,7 +25,7 @@ Lfunc_end0:
 test_movx_2:                            # @test_movx_2
 # %bb.0:
 	mov	%r0, 1
-	sub	%sp, 4 # short
+	sub	%sp, 8 # short
 	mov	%r2, 0
 	mov	%r3, 3
 	st	%r0, 0 (sp)
@@ -33,7 +33,7 @@ test_movx_2:                            # @test_movx_2
 	cmp	%r1, %r2 # fast
 	b	%lr
 	moveq	%r0, %r3
-	add	%sp, 4 # short
+	add	%sp, 8 # short
 	nop
 Lfunc_end1:
 	.size	test_movx_2, Lfunc_end1-test_movx_2
@@ -44,6 +44,7 @@ Lfunc_end1:
 test_movx_3:                            # @test_movx_3
 # %bb.0:
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
+	sub	%sp, 4 # short
 	mov	%r3, 1
 	ld	%r1, (%r0)
 	ld	%r2, (%r0)
@@ -51,7 +52,7 @@ test_movx_3:                            # @test_movx_3
 	cmp	%r1, %r2 # fast
 	b	%lr
 	movlt	%r0, %r3
-	nop
+	add	%sp, 4 # short
 	nop
 Lfunc_end2:
 	.size	test_movx_3, Lfunc_end2-test_movx_3
@@ -63,13 +64,14 @@ test_movx_4:                            # @test_movx_4
 # %bb.0:
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	mov	%r2, 0
+	sub	%sp, 4 # short
 	mov	%r3, 3
 	ld	%r1, (%r0)
 	mov	%r0, 1
 	cmp	%r1, %r2 # fast
 	b	%lr
 	moveq	%r0, %r3
-	nop
+	add	%sp, 4 # short
 	nop
 Lfunc_end3:
 	.size	test_movx_4, Lfunc_end3-test_movx_4
@@ -80,26 +82,31 @@ Lfunc_end3:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
+	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	test_movx_1
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	sub	%sp, 4 # short
 	nop
 	nop
+	add	%sp, 4 # short
 	lea	%r2, dst(%pc) # PCrel load
 	bl	test_movx_2
+	sub	%sp, 4 # short
 	st	%r0, (%r2)
 	nop
-	nop
+	add	%sp, 4 # short
 	bl	test_movx_3
+	sub	%sp, 4 # short
 	st	%r0, (%r2)
 	nop
-	nop
+	add	%sp, 4 # short
 	bl	test_movx_4
+	sub	%sp, 4 # short
 	st	%r0, (%r2)
-	nop
 	nop
 	mov	%r1, 0
+	add	%sp, 4 # short
 	st	%r0, (%r2)
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, %r1 # fast
@@ -110,7 +117,7 @@ Lfunc_end4:
 	.type	dst,@object             # @dst
 	.data
 	.globl	dst
-	.p2align	4
+	.p2align	2
 dst:
 	.zero	16
 	.size	dst, 16

@@ -5,7 +5,7 @@
 	.type	llvm_control1,@function
 llvm_control1:                          # @llvm_control1
 # %bb.0:
-	sub	%sp, 4 # short
+	sub	%sp, 8 # short
 	mov	%r0, 0
 	st	%r0, 0 (sp)
 	ld	%r1, 0 (sp)
@@ -24,7 +24,7 @@ LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	cmp	%r1, %r2 # fast
 	b	%lr
 	moveq	%r0, %r3
-	add	%sp, 4 # short
+	add	%sp, 8 # short
 	nop
 Lfunc_end0:
 	.size	llvm_control1, Lfunc_end0-llvm_control1
@@ -35,15 +35,17 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
+	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	llvm_control1
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	sub	%sp, 4 # short
 	nop
 	nop
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	add	%sp, 4 # short
 	lea	%r1, dst(%pc) # PCrel load
+	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	st	%r0, (%r1)
 	add	%sp, 12 # short
+	st	%r0, (%r1)
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

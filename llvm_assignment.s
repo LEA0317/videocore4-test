@@ -6,10 +6,11 @@
 assignment:                             # @assignment
 # %bb.0:
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
+	sub	%sp, 4 # short
 	ld	%r1, (%r0)
 	b	%lr
 	st	%r1, (%r0)
-	nop
+	add	%sp, 4 # short
 	nop
 Lfunc_end0:
 	.size	assignment, Lfunc_end0-assignment
@@ -20,11 +21,13 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
+	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	assignment
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	sub	%sp, 4 # short
 	nop
 	nop
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	add	%sp, 4 # short
+	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, 0
@@ -34,7 +37,7 @@ Lfunc_end1:
                                         # -- End function
 	.type	_MergedGlobals,@object  # @_MergedGlobals
 	.data
-	.p2align	4
+	.p2align	2
 _MergedGlobals:
 	.zero	8
 	.long	127                     # 0x7f

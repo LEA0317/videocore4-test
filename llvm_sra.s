@@ -5,93 +5,39 @@
 	.type	_sra,@function
 _sra:                                   # @_sra
 # %bb.0:
-	sub	%sp, 28 # short
-	st	%r6, 24 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r7, 20 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r8, 16 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r9, 12 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	cmp	%r1, 0 # long imm
-	beq	LBB0_4
-	st	%r12, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r11, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r10, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-# %bb.1:
-	mov	%r2, 0
-	cmp	%r1, 1 # long imm
-	beq	LBB0_2
-	mov	%r4, %r2 # fast
-	and	%r3, %r1, 1 # medium
+	beq	LBB0_1
+	sub	%sp, 4 # short
 	nop
-	b	LBB0_5
+	nop
+	b	LBB0_2
 	nop
 	nop
 	nop
-# %bb.5:
-	cmp	%r1, %r3 # fast
-	sub	%r1, %r3 # short
-	mov	%r5, 0
-	movcs	%r5, 1
-	mov	%r6, %r2 # fast
-	neg	%r5, %r5
-	mov	%r4, %r6 # fast
-	mov	%r7, %r1 # fast
-LBB0_6:                                 # =>This Inner Loop Header: Depth=1
-	mov	%r8, %r6 # fast
-	mov	%r9, %r0 # fast
-	add	%r7, -2 # long
-	add	%r5, %r1 # short
-	mov	%r1, 0
-	add	%r4, 2 # short
-	mov	%r6, 0
-	add	%r2, %r6 # short
-	mul	%r8, 12 # short
-	add	%r5, -1 # long
-	add	%r9, %r8 # short
-	ld	%r8, (%r9)
-	ld	%r10, 4 (%r9) # s12-bit displacement
-	ld	%r11, 12 (%r9) # s12-bit displacement
-	ld	%r12, 16 (%r9) # s12-bit displacement
-	cmp	%r7, %r1 # fast
-	movcs	%r1, 1
-	mov	%r1, %r7 # fast
-	cmp	%r4, %r6 # fast
-	or	%r1, %r5 # short
-	movcs	%r6, 1
-	asr	%r8, %r10 # short
-	asr	%r11, %r12 # short
-	st	%r8, 8 (%r9) # s12-bit displacement
+# %bb.2:                                # %.preheader
+	add	%r0, 8 # short
+LBB0_3:                                 # =>This Inner Loop Header: Depth=1
+	mov	%r2, %r0 # fast
+	mov	%r3, %r0 # fast
+	add	%r1, -1 # long
+	add	%r2, -8 # long
+	add	%r3, -4 # long
+	ld	%r2, (%r2)
+	ld	%r3, (%r3)
+	asr	%r2, %r3 # short
+	st	%r2, (%r0)
 	cmp	%r1, 0 # long imm
-	beq	LBB0_2
-	mov	%r1, %r7 # fast
-	mov	%r6, %r4 # fast
-	st	%r11, 20 (%r9) # s12-bit displacement
-	b	LBB0_6
+	beq	LBB0_1
+	add	%r0, 12 # short
+	nop
+	nop
+	b	LBB0_3
 	nop
 	nop
 	nop
-LBB0_2:
-	cmp	%r3, 0 # long imm
-	beq	LBB0_4
-	nop
-	nop
-	nop
-# %bb.3:
-	mul	%r4, 12 # short
-	add	%r0, %r4 # short
-	ld	%r1, (%r0)
-	ld	%r2, 4 (%r0) # s12-bit displacement
-	asr	%r1, %r2 # short
-	st	%r1, 8 (%r0) # s12-bit displacement
-LBB0_4:
-	ld	%r12, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r11, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r10, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r9, 12 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r8, 16 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r7, 20 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r6, 24 (%sp) # s16-bit displacement # 4-byte Folded Spill
+LBB0_1:
 	b	%lr
-	add	%sp, 28 # short
+	add	%sp, 4 # short
 	nop
 	nop
 Lfunc_end0:
@@ -103,11 +49,13 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
+	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	_sra
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	sub	%sp, 4 # short
 	mov	%r1, 27
 	lea	%r0, p(%pc) # PCrel load
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	add	%sp, 4 # short
+	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, 0
@@ -118,7 +66,7 @@ Lfunc_end1:
 	.type	p,@object               # @p
 	.data
 	.globl	p
-	.p2align	4
+	.p2align	2
 p:
 	.long	1024                    # 0x400
 	.long	0                       # 0x0

@@ -5,7 +5,7 @@
 	.type	frame_a2z,@function
 frame_a2z:                              # @frame_a2z
 # %bb.0:
-	sub	%sp, 104 # short
+	sub	%sp, 108 # short
 	mov	%r0, 0
 	st	%r0, 100 (sp)
 	ld	%r0, 100 (sp)
@@ -135,7 +135,7 @@ frame_a2z:                              # @frame_a2z
 	add	%r0, %r4 # short
 	b	%lr
 	add	%r0, %r1 # short
-	add	%sp, 104 # short
+	add	%sp, 108 # short
 	nop
 Lfunc_end0:
 	.size	frame_a2z, Lfunc_end0-frame_a2z
@@ -146,15 +146,17 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
+	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	frame_a2z
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	sub	%sp, 4 # short
 	nop
 	nop
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	add	%sp, 4 # short
 	lea	%r1, dst(%pc) # PCrel load
+	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	st	%r0, (%r1)
 	add	%sp, 12 # short
+	st	%r0, (%r1)
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
