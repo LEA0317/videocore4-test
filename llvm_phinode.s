@@ -7,8 +7,8 @@ llvm_phinode:                           # @llvm_phinode
 # %bb.0:
 	cmp	%r0, 0 # long imm
 	beq	LBB0_5
-	sub	%sp, 4 # short
 	mov	%r3, 1
+	nop
 	nop
 # %bb.1:
 	cmp	%r1, 0 # long imm
@@ -33,7 +33,7 @@ LBB0_5:
 	add	%r3, %r1 # short
 	b	%lr
 	mov	%r0, %r3 # fast
-	add	%sp, 4 # short
+	nop
 	nop
 Lfunc_end0:
 	.size	llvm_phinode, Lfunc_end0-llvm_phinode
@@ -46,64 +46,55 @@ main:                                   # @main
 	lea	%r3, _MergedGlobals(%pc) # PCrel load
 	sub	%sp, 12 # short
 	ld	%r0, (%r3)
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	llvm_phinode
 	mov	%r2, %r0 # fast
 	mov	%r1, %r0 # fast
-	sub	%sp, 4 # short
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	ld	%r1, (%r3)
-	add	%sp, 4 # short
 	st	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r1 # fast
 	mov	%r0, %r1 # fast
-	sub	%sp, 4 # short
+	nop
 	mov	%r1, 0
-	add	%sp, 4 # short
 	st	%r0, (%r3)
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, %r1 # fast

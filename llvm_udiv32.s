@@ -5,7 +5,7 @@
 	.type	udiv32,@function
 udiv32:                                 # @udiv32
 # %bb.0:
-	sub	%sp, 100 # short
+	sub	%sp, 96 # short
 	st	%r7, 88 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r8, 84 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 92 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -427,7 +427,7 @@ udiv32:                                 # @udiv32
 	ld	%r7, 88 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r6, 92 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 100 # short
+	add	%sp, 96 # short
 	mov	%r0, %r2 # fast
 	nop
 Lfunc_end0:
@@ -443,7 +443,7 @@ main:                                   # @main
 	lea	%r3, z(%pc) # PCrel load
 	lea	%r5, d(%pc) # PCrel load
 	lea	%r4, q(%pc) # PCrel load
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 LBB1_1:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r0, %r2 # fast
 	mov	%r1, %r2 # fast
@@ -452,21 +452,21 @@ LBB1_1:                                 # =>This Inner Loop Header: Depth=1
 	bl	udiv32
 	ld	%r1, (%r1)
 	ld	%r0, (%r0)
-	sub	%sp, 4 # short
+	nop
 	mov	%r1, %r2 # fast
 	add	%r2, 4 # short
 	add	%r1, %r4 # short
 	cmp	%r2, 4096 # long imm
 	beq	LBB1_2
 	st	%r0, (%r1)
-	add	%sp, 4 # short
+	nop
 	nop
 	b	LBB1_1
 	nop
 	nop
 	nop
 # %bb.2:
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	ld	%r0, (%r4)

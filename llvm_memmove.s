@@ -7,7 +7,6 @@ main:                                   # @main
 # %bb.0:                                # %copy_backwards
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
-	sub	%sp, 4 # short
 LBB0_1:                                 # %copy_backwards_loop
                                         # =>This Inner Loop Header: Depth=1
 	ldb	%r2, (%r0, %r1)
@@ -19,9 +18,8 @@ LBB0_1:                                 # %copy_backwards_loop
 	nop
 	nop
 # %bb.2:                                # %memmove_done
-	mov	%r0, 0
 	b	%lr
-	add	%sp, 4 # short
+	mov	%r0, 0
 	nop
 	nop
 Lfunc_end0:

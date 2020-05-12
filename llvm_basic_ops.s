@@ -7,7 +7,6 @@ test_basic_ops:                         # @test_basic_ops
 # %bb.0:
 	ld	%r3, (%r1)
 	ld	%r4, (%r2)
-	sub	%sp, 4 # short
 	add	%r4, %r3 # short
 	st	%r4, (%r0)
 	ld	%r3, 4 (%r1) # s12-bit displacement
@@ -75,7 +74,7 @@ test_basic_ops:                         # @test_basic_ops
 	b	%lr
 	st	%r1, 52 (%r0) # s12-bit displacement
 	st	%r3, 48 (%r0) # s12-bit displacement
-	add	%sp, 4 # short
+	nop
 Lfunc_end0:
 	.size	test_basic_ops, Lfunc_end0-test_basic_ops
                                         # -- End function
@@ -86,13 +85,11 @@ main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	test_basic_ops
-	sub	%sp, 4 # short
 	mov	%r2, %r0 # fast
 	mov	%r1, %r0 # fast
-	add	%sp, 4 # short
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, 0

@@ -7,7 +7,6 @@ make_crc_table:                         # @make_crc_table
 # %bb.0:
 	mov	%r0, 0
 	lea	%r1, crc_table(%pc) # PCrel load
-	sub	%sp, 4 # short
 	mov	%r2, %r0 # fast
 LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r3, %r2 # fast
@@ -68,7 +67,7 @@ LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	nop
 # %bb.2:
 	b	%lr
-	add	%sp, 4 # short
+	nop
 	nop
 	nop
 Lfunc_end0:
@@ -79,7 +78,7 @@ Lfunc_end0:
 	.type	crc32,@function
 crc32:                                  # @crc32
 # %bb.0:
-	sub	%sp, 12 # short
+	sub	%sp, 8 # short
 	cmp	%r1, 0 # long imm
 	beq	LBB1_2
 	st	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -139,7 +138,7 @@ LBB1_2:
 	ld	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
+	add	%sp, 8 # short
 	nop
 	nop
 Lfunc_end1:
@@ -151,21 +150,18 @@ Lfunc_end1:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	make_crc_table
-	sub	%sp, 4 # short
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
-	add	%sp, 4 # short
 	bl	crc32
-	sub	%sp, 4 # short
 	ld	%r1, (%r2)
 	lea	%r0, data(%pc) # PCrel load
+	nop
 	mov	%r1, 0
-	add	%sp, 4 # short
 	st	%r0, (%r2)
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, %r1 # fast

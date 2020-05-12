@@ -5,7 +5,7 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 1208 # short
+	sub	%sp, 1204 # short
 	mov	%r0, 0
 	add	%r1, %sp, 400 # medium
 	add	%r2, %sp, 0 # medium
@@ -35,7 +35,7 @@ LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r0, 0
 	ld	%r6, 1200 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 1208 # short
+	add	%sp, 1204 # short
 	nop
 	nop
 Lfunc_end0:

@@ -7,7 +7,7 @@ gcd:                                    # @gcd
 # %bb.0:
 	cmp	%r0, %r1 # fast
 	beq	LBB0_3
-	sub	%sp, 4 # short
+	nop
 	nop
 	nop
 # %bb.1:                                # %.preheader
@@ -28,7 +28,7 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	nop
 LBB0_3:
 	b	%lr
-	add	%sp, 4 # short
+	nop
 	nop
 	nop
 Lfunc_end0:
@@ -42,13 +42,11 @@ main:                                   # @main
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
 	sub	%sp, 12 # short
 	ld	%r0, (%r2)
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	gcd
 	mov	%r1, %r0 # fast
-	sub	%sp, 4 # short
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
-	add	%sp, 4 # short
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	st	%r0, (%r2)

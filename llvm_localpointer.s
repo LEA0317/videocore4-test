@@ -5,12 +5,12 @@
 	.type	llvm_local_pointer,@function
 llvm_local_pointer:                     # @llvm_local_pointer
 # %bb.0:
-	sub	%sp, 8 # short
+	sub	%sp, 4 # short
 	mov	%r0, 3
 	st	%r0, 0 (sp)
 	ld	%r0, 0 (sp)
 	b	%lr
-	add	%sp, 8 # short
+	add	%sp, 4 # short
 	nop
 	nop
 Lfunc_end0:
@@ -22,17 +22,15 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	llvm_local_pointer
-	sub	%sp, 4 # short
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	add	%sp, 4 # short
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	lea	%r1, dst(%pc) # PCrel load
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
 	st	%r0, (%r1)
+	add	%sp, 12 # short
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

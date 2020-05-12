@@ -7,7 +7,6 @@ main:                                   # @main
 # %bb.0:
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
-	sub	%sp, 4 # short
 LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0 # fast
 	mov	%r3, %r0 # fast
@@ -28,9 +27,8 @@ LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	nop
 	nop
 # %bb.2:
-	mov	%r0, 0
 	b	%lr
-	add	%sp, 4 # short
+	mov	%r0, 0
 	nop
 	nop
 Lfunc_end0:

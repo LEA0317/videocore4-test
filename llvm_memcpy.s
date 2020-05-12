@@ -8,7 +8,6 @@ main:                                   # @main
 	mov	%r0, 0
 	lea	%r1, src(%pc) # PCrel load
 	lea	%r2, dst(%pc) # PCrel load
-	sub	%sp, 4 # short
 LBB0_1:                                 # %load-store-loop
                                         # =>This Inner Loop Header: Depth=1
 	ldb	%r3, (%r0, %r1)
@@ -20,9 +19,8 @@ LBB0_1:                                 # %load-store-loop
 	nop
 	nop
 # %bb.2:                                # %memcpy-split
-	mov	%r0, 0
 	b	%lr
-	add	%sp, 4 # short
+	mov	%r0, 0
 	nop
 	nop
 Lfunc_end0:

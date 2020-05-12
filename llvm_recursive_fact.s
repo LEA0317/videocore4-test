@@ -7,8 +7,8 @@ _Z14recursive_facti:                    # @_Z14recursive_facti
 # %bb.0:
 	cmp	%r0, 0 # long imm
 	beq	LBB0_3
-	sub	%sp, 4 # short
 	mov	%r1, 1
+	nop
 	nop
 # %bb.1:                                # %.preheader
 	mov	%r3, 1
@@ -23,9 +23,8 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r0, %r2 # fast
 	nop
 LBB0_3:
-	mov	%r0, %r1 # fast
 	b	%lr
-	add	%sp, 4 # short
+	mov	%r0, %r1 # fast
 	nop
 	nop
 Lfunc_end0:
@@ -40,8 +39,8 @@ main:                                   # @main
 	ld	%r2, (%r1)
 	cmp	%r2, 0 # long imm
 	beq	LBB1_3
-	sub	%sp, 4 # short
 	mov	%r0, 1
+	nop
 	nop
 # %bb.1:                                # %.preheader
 	mov	%r0, 1
@@ -54,9 +53,8 @@ LBB1_2:                                 # =>This Inner Loop Header: Depth=1
 	nop
 	nop
 LBB1_3:
-	st	%r0, (%r1)
 	b	%lr
-	add	%sp, 4 # short
+	st	%r0, (%r1)
 	nop
 	nop
 Lfunc_end1:

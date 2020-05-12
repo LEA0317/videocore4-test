@@ -6,11 +6,10 @@
 assignment:                             # @assignment
 # %bb.0:
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
-	sub	%sp, 4 # short
 	ld	%r1, (%r0)
 	b	%lr
 	st	%r1, (%r0)
-	add	%sp, 4 # short
+	nop
 	nop
 Lfunc_end0:
 	.size	assignment, Lfunc_end0-assignment
@@ -21,13 +20,11 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	assignment
-	sub	%sp, 4 # short
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	add	%sp, 4 # short
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, 0

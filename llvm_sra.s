@@ -7,7 +7,7 @@ _sra:                                   # @_sra
 # %bb.0:
 	cmp	%r1, 0 # long imm
 	beq	LBB0_1
-	sub	%sp, 4 # short
+	nop
 	nop
 	nop
 	b	LBB0_2
@@ -37,7 +37,7 @@ LBB0_3:                                 # =>This Inner Loop Header: Depth=1
 	nop
 LBB0_1:
 	b	%lr
-	add	%sp, 4 # short
+	nop
 	nop
 	nop
 Lfunc_end0:
@@ -49,13 +49,11 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	sub	%sp, 12 # short
-	st	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	bl	_sra
-	sub	%sp, 4 # short
+	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	mov	%r1, 27
 	lea	%r0, p(%pc) # PCrel load
-	add	%sp, 4 # short
-	ld	%lr, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 12 # short
 	mov	%r0, 0
