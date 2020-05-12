@@ -11,6 +11,7 @@ TARGET_CPU     := vc4
 
 CLANG       := $(BIN_DIR)/clang++
 CLANG_FLAGS += -Ofast
+CLANG_FLAGS += -target $(TARGET_MARCH) -mcpu=$(TARGET_CPU)
 
 LLC         := $(BIN_DIR)/llc
 LLC_FLAGS   := -march=$(TARGET_MARCH) -mcpu=$(TARGET_CPU)
