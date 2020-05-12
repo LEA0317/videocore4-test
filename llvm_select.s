@@ -79,9 +79,9 @@ Lfunc_end3:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 12 # short
+	sub	%sp, 4 # short
 	bl	test_movx_1
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
 	lea	%r2, dst(%pc) # PCrel load
@@ -99,9 +99,9 @@ main:                                   # @main
 	nop
 	mov	%r1, 0
 	st	%r0, (%r2)
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
+	add	%sp, 4 # short
 	mov	%r0, %r1 # fast
 	nop
 Lfunc_end4:

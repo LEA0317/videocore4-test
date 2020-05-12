@@ -80,15 +80,11 @@ crc32:                                  # @crc32
 # %bb.0:
 	sub	%sp, 8 # short
 	cmp	%r1, 0 # long imm
-	beq	LBB1_2
+	beq	LBB1_3
 	st	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	mov	%r2, 0
-	b	LBB1_3
-	nop
-	nop
-	nop
-# %bb.3:                                # %.preheader
+# %bb.1:                                # %.preheader
 	mov	%r3, 0
                                         # implicit-def: $r5
 	b	LBB1_4
@@ -107,7 +103,7 @@ LBB1_6:                                 #   in Loop: Header=BB1_4 Depth=1
 	lsr	%r7, 8 # short
 	mov	%r2, %r6 # fast
 	cmp	%r1, %r3 # fast
-	beq	LBB1_1
+	beq	LBB1_2
 	eor	%r2, %r7 # short
 	nop
 	nop
@@ -131,9 +127,9 @@ LBB1_4:                                 # =>This Inner Loop Header: Depth=1
 	ld	%r5, (%r7)
 	nop
 	nop
-LBB1_1:
-	not	%r2, %r2
 LBB1_2:
+	not	%r2, %r2
+LBB1_3:
 	mov	%r0, %r2 # fast
 	ld	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -149,9 +145,9 @@ Lfunc_end1:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 12 # short
+	sub	%sp, 4 # short
 	bl	make_crc_table
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
@@ -161,9 +157,9 @@ main:                                   # @main
 	nop
 	mov	%r1, 0
 	st	%r0, (%r2)
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
+	add	%sp, 4 # short
 	mov	%r0, %r1 # fast
 	nop
 Lfunc_end2:

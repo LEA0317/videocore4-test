@@ -6,7 +6,7 @@
 llvm_phinode:                           # @llvm_phinode
 # %bb.0:
 	cmp	%r0, 0 # long imm
-	beq	LBB0_5
+	beq	LBB0_4
 	mov	%r3, 1
 	nop
 	nop
@@ -17,8 +17,12 @@ llvm_phinode:                           # @llvm_phinode
 	nop
 	nop
 # %bb.2:
-	b	LBB0_4
 	add	%r0, -1 # long
+	mov	%r3, %r0 # fast
+LBB0_4:
+	add	%r3, %r1 # short
+	b	%lr
+	mov	%r0, %r3 # fast
 	nop
 	nop
 LBB0_3:
@@ -27,9 +31,7 @@ LBB0_3:
 	add	%r3, 2 # short
 	cmp	%r2, %r4 # fast
 	moveq	%r0, %r3
-LBB0_4:
 	mov	%r3, %r0 # fast
-LBB0_5:
 	add	%r3, %r1 # short
 	b	%lr
 	mov	%r0, %r3 # fast
@@ -44,12 +46,12 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	lea	%r3, _MergedGlobals(%pc) # PCrel load
-	sub	%sp, 12 # short
+	sub	%sp, 4 # short
 	ld	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r0 # fast
 	mov	%r1, %r0 # fast
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r1, (%r3)
 	st	%r0, (%r3)
 	bl	llvm_phinode
@@ -94,9 +96,9 @@ main:                                   # @main
 	nop
 	mov	%r1, 0
 	st	%r0, (%r3)
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
+	add	%sp, 4 # short
 	mov	%r0, %r1 # fast
 	nop
 Lfunc_end1:

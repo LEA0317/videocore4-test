@@ -145,16 +145,16 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 12 # short
+	sub	%sp, 4 # short
 	bl	frame_a2z
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	lea	%r1, dst(%pc) # PCrel load
 	b	%lr
 	st	%r0, (%r1)
-	add	%sp, 12 # short
+	add	%sp, 4 # short
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

@@ -40,15 +40,15 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
-	sub	%sp, 12 # short
+	sub	%sp, 4 # short
 	ld	%r0, (%r2)
 	bl	gcd
 	mov	%r1, %r0 # fast
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
+	add	%sp, 4 # short
 	st	%r0, (%r2)
 	nop
 Lfunc_end1:

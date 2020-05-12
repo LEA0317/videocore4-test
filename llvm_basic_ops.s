@@ -83,15 +83,15 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 12 # short
+	sub	%sp, 4 # short
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	bl	test_basic_ops
 	mov	%r2, %r0 # fast
 	mov	%r1, %r0 # fast
-	st	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%lr, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 12 # short
+	add	%sp, 4 # short
 	mov	%r0, 0
 	nop
 Lfunc_end1:
