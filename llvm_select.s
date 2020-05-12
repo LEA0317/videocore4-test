@@ -24,8 +24,8 @@ Lfunc_end0:
 	.type	test_movx_2,@function
 test_movx_2:                            # @test_movx_2
 # %bb.0:
-	mov	%r0, 1
 	sub	%sp, 8 # short
+	mov	%r0, 1
 	mov	%r2, 0
 	mov	%r3, 3
 	st	%r0, 0 (sp)
@@ -44,8 +44,8 @@ Lfunc_end1:
 test_movx_3:                            # @test_movx_3
 # %bb.0:
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
-	sub	%sp, 4 # short
 	mov	%r3, 1
+	sub	%sp, 4 # short
 	ld	%r1, (%r0)
 	ld	%r2, (%r0)
 	mov	%r0, 2
@@ -64,8 +64,8 @@ test_movx_4:                            # @test_movx_4
 # %bb.0:
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	mov	%r2, 0
-	sub	%sp, 4 # short
 	mov	%r3, 3
+	sub	%sp, 4 # short
 	ld	%r1, (%r0)
 	mov	%r0, 1
 	cmp	%r1, %r2 # fast

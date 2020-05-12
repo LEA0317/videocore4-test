@@ -18,9 +18,9 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	cmp	%r1, %r2 # fast
 	movlt	%r4, %r1
 	cmp	%r1, %r2 # fast
+	movlt	%r2, %r3
 	sub	%r0, %r4 # short
 	sub	%r1, %r2 # short
-	movlt	%r2, %r3
 	cmp	%r0, %r1 # fast
 	bne	LBB0_2
 	mov	%r2, %r0 # fast
