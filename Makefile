@@ -19,6 +19,7 @@ LLC_FLAGS   += -relocation-model=static
 LLC_FLAGS   += -enable-ipra
 LLC_FLAGS   += -time-passes
 LLC_FLAGS   += -O3
+#LLC_FLAGS   += -debug
 
 .PHONY: all
 all: $(OUT_FILES)
