@@ -19,13 +19,15 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
+	sub	%sp, 4 # short
 	bl	assignment
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	nop
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
+	add	%sp, 4 # short
 	mov	%r0, 0
-	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

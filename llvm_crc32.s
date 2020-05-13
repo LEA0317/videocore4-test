@@ -149,8 +149,9 @@ Lfunc_end1:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
+	sub	%sp, 4 # short
 	bl	make_crc_table
-	nop
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
@@ -160,9 +161,10 @@ main:                                   # @main
 	nop
 	mov	%r1, 0
 	st	%r0, (%r2)
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
+	add	%sp, 4 # short
 	mov	%r0, %r1 # fast
-	nop
 	nop
 Lfunc_end2:
 	.size	main, Lfunc_end2-main

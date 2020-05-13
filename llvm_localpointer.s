@@ -21,14 +21,16 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
+	sub	%sp, 4 # short
 	bl	llvm_local_pointer
-	nop
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
 	lea	%r1, dst(%pc) # PCrel load
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	st	%r0, (%r1)
-	nop
+	add	%sp, 4 # short
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

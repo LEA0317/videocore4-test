@@ -436,10 +436,12 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
+	sub	%sp, 4 # short
 	mov	%r2, 0
 	lea	%r3, z(%pc) # PCrel load
 	lea	%r5, d(%pc) # PCrel load
 	lea	%r4, q(%pc) # PCrel load
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 LBB1_2:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r0, %r2 # fast
@@ -463,8 +465,10 @@ LBB1_2:                                 # %for.body
 	nop
 	nop
 # %bb.1:                                # %for.cond.cleanup
-	b	%lr
 	ld	%r0, (%r4)
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	b	%lr
+	add	%sp, 4 # short
 	nop
 	nop
 Lfunc_end1:

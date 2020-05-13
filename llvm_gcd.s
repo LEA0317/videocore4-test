@@ -41,14 +41,16 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:                                # %entry
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
+	sub	%sp, 4 # short
 	ld	%r0, (%r2)
 	bl	gcd
 	mov	%r1, %r0 # fast
+	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
-	nop
+	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
+	add	%sp, 4 # short
 	st	%r0, (%r2)
-	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
