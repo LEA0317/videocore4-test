@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	udiv32,@function
 udiv32:                                 # @udiv32
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 92 # short
 	st	%r7, 84 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 88 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -435,14 +435,13 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
-	sub	%sp, 4 # short
+# %bb.0:                                # %entry
 	mov	%r2, 0
 	lea	%r3, z(%pc) # PCrel load
 	lea	%r5, d(%pc) # PCrel load
 	lea	%r4, q(%pc) # PCrel load
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-LBB1_2:                                 # =>This Inner Loop Header: Depth=1
+LBB1_2:                                 # %for.body
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r0, %r2 # fast
 	mov	%r1, %r2 # fast
 	add	%r0, %r3 # short
@@ -463,11 +462,10 @@ LBB1_2:                                 # =>This Inner Loop Header: Depth=1
 	nop
 	nop
 	nop
-# %bb.1:
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+# %bb.1:                                # %for.cond.cleanup
 	b	%lr
-	add	%sp, 4 # short
 	ld	%r0, (%r4)
+	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

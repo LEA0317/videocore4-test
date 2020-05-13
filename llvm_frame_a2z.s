@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	frame_a2z,@function
 frame_a2z:                              # @frame_a2z
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 104 # short
 	mov	%r0, 0
 	st	%r0, 100 (sp)
@@ -144,17 +144,15 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
-	sub	%sp, 4 # short
+# %bb.0:                                # %entry
 	bl	frame_a2z
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	nop
 	lea	%r1, dst(%pc) # PCrel load
 	b	%lr
 	st	%r0, (%r1)
-	add	%sp, 4 # short
+	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

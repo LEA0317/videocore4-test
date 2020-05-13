@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	llvm_local_pointer,@function
 llvm_local_pointer:                     # @llvm_local_pointer
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	mov	%r0, 3
 	st	%r0, 0 (sp)
@@ -20,17 +20,15 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
-	sub	%sp, 4 # short
+# %bb.0:                                # %entry
 	bl	llvm_local_pointer
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	nop
 	lea	%r1, dst(%pc) # PCrel load
 	b	%lr
 	st	%r0, (%r1)
-	add	%sp, 4 # short
+	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

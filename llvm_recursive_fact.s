@@ -4,16 +4,17 @@
 	.p2align	2
 	.type	_Z14recursive_facti,@function
 _Z14recursive_facti:                    # @_Z14recursive_facti
-# %bb.0:
+# %bb.0:                                # %entry
 	cmp	%r0, 0 # long imm
 	beq	LBB0_3
 	mov	%r1, 1
 	nop
 	nop
-# %bb.1:                                # %.preheader
+# %bb.1:                                # %if.end.preheader
 	mov	%r3, 1
 	mov	%r2, %r0 # fast
-LBB0_2:                                 # =>This Inner Loop Header: Depth=1
+LBB0_2:                                 # %if.end
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r1, %r0 # fast
 	add	%r2, -1 # long
 	mul	%r1, %r3 # short
@@ -22,7 +23,7 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r3, %r1 # fast
 	mov	%r0, %r2 # fast
 	nop
-LBB0_3:
+LBB0_3:                                 # %return
 	b	%lr
 	mov	%r0, %r1 # fast
 	nop
@@ -34,7 +35,7 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	lea	%r1, _MergedGlobals(%pc) # PCrel load
 	ld	%r2, (%r1)
 	cmp	%r2, 0 # long imm
@@ -42,9 +43,10 @@ main:                                   # @main
 	mov	%r0, 1
 	nop
 	nop
-# %bb.1:                                # %.preheader
+# %bb.1:                                # %if.end.i.preheader
 	mov	%r0, 1
-LBB1_2:                                 # =>This Inner Loop Header: Depth=1
+LBB1_2:                                 # %if.end.i
+                                        # =>This Inner Loop Header: Depth=1
 	mul	%r0, %r2 # short
 	add	%r2, -1 # long
 	cmp	%r2, 0 # long imm
@@ -52,7 +54,7 @@ LBB1_2:                                 # =>This Inner Loop Header: Depth=1
 	nop
 	nop
 	nop
-LBB1_3:
+LBB1_3:                                 # %_Z14recursive_facti.exit
 	b	%lr
 	st	%r0, (%r1)
 	nop

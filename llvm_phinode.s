@@ -4,28 +4,28 @@
 	.p2align	2
 	.type	llvm_phinode,@function
 llvm_phinode:                           # @llvm_phinode
-# %bb.0:
+# %bb.0:                                # %entry
 	cmp	%r0, 0 # long imm
 	beq	LBB0_4
 	mov	%r3, 1
 	nop
 	nop
-# %bb.1:
+# %bb.1:                                # %if.else
 	cmp	%r1, 0 # long imm
 	beq	LBB0_3
 	nop
 	nop
 	nop
-# %bb.2:
+# %bb.2:                                # %if.then2
 	add	%r0, -1 # long
 	mov	%r3, %r0 # fast
-LBB0_4:
+LBB0_4:                                 # %if.end7
 	add	%r3, %r1 # short
 	b	%lr
 	mov	%r0, %r3 # fast
 	nop
 	nop
-LBB0_3:
+LBB0_3:                                 # %if.else3
 	mov	%r3, %r0 # fast
 	mov	%r4, 0
 	add	%r3, 2 # short
@@ -44,14 +44,13 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	lea	%r3, _MergedGlobals(%pc) # PCrel load
-	sub	%sp, 4 # short
 	ld	%r0, (%r3)
 	bl	llvm_phinode
 	mov	%r2, %r0 # fast
 	mov	%r1, %r0 # fast
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	nop
 	ld	%r1, (%r3)
 	st	%r0, (%r3)
 	bl	llvm_phinode
@@ -96,10 +95,9 @@ main:                                   # @main
 	nop
 	mov	%r1, 0
 	st	%r0, (%r3)
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 4 # short
 	mov	%r0, %r1 # fast
+	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

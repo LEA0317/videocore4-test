@@ -4,15 +4,16 @@
 	.p2align	2
 	.type	_sra,@function
 _sra:                                   # @_sra
-# %bb.0:
+# %bb.0:                                # %entry
 	cmp	%r1, 0 # long imm
 	beq	LBB0_2
 	nop
 	nop
 	nop
-# %bb.1:                                # %.preheader
+# %bb.1:                                # %for.body.preheader
 	add	%r0, 8 # short
-LBB0_3:                                 # =>This Inner Loop Header: Depth=1
+LBB0_3:                                 # %for.body
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0 # fast
 	mov	%r3, %r0 # fast
 	add	%r1, -1 # long
@@ -31,7 +32,7 @@ LBB0_3:                                 # =>This Inner Loop Header: Depth=1
 	nop
 	nop
 	nop
-LBB0_2:
+LBB0_2:                                 # %for.cond.cleanup
 	b	%lr
 	nop
 	nop
@@ -43,16 +44,15 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
-	sub	%sp, 4 # short
-	bl	_sra
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	mov	%r1, 27
+# %bb.0:                                # %entry
 	lea	%r0, p(%pc) # PCrel load
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	bl	_sra
+	mov	%r1, 27
+	nop
+	nop
 	b	%lr
-	add	%sp, 4 # short
 	mov	%r0, 0
+	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

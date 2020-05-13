@@ -4,14 +4,15 @@
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 1204 # short
 	mov	%r0, 0
 	st	%r6, 1200 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	add	%r1, %sp, 400 # medium
 	add	%r2, %sp, 0 # medium
 	add	%r3, %sp, 800 # medium
-LBB0_2:                                 # =>This Inner Loop Header: Depth=1
+LBB0_2:                                 # %for.body
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r4, %r1 # fast
 	mov	%r5, %r2 # fast
 	add	%r4, %r0 # short
@@ -31,7 +32,7 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	nop
 	nop
 	nop
-# %bb.1:
+# %bb.1:                                # %for.cond.cleanup
 	mov	%r0, 0
 	ld	%r6, 1200 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr

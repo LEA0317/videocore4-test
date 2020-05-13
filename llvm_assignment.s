@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	assignment,@function
 assignment:                             # @assignment
-# %bb.0:
+# %bb.0:                                # %entry
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	ld	%r1, (%r0)
 	b	%lr
@@ -18,16 +18,14 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
-	sub	%sp, 4 # short
+# %bb.0:                                # %entry
 	bl	assignment
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	nop
 	b	%lr
-	add	%sp, 4 # short
 	mov	%r0, 0
+	nop
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
