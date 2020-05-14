@@ -13,12 +13,8 @@ LBB0_2:                                 # %for.body
 	add	%r0, 1 # short
 	st	%r2, (%r1)
 	cmp	%r0, 4096 # long imm
-	beq	LBB0_1
+	bne	LBB0_2
 	add	%r1, 4 # short
-	nop
-	nop
-	b	LBB0_2
-	nop
 	nop
 	nop
 # %bb.1:                                # %for.cond.cleanup
