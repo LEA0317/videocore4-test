@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	frame_a2z,@function
 frame_a2z:                              # @frame_a2z
-# %bb.0:                                # %entry
+# %bb.0:
 	sub	%sp, 104 # short
 	mov	%r0, 0
 	st	%r0, 100 (sp)
@@ -144,7 +144,7 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
+# %bb.0:
 	sub	%sp, 4 # short
 	bl	frame_a2z
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill

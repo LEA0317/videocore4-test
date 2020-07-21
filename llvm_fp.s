@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	_Z4testPff,@function
 _Z4testPff:                             # @_Z4testPff
-# %bb.0:                                # %entry
+# %bb.0:
 	fmul	%r1, %r1, %r1
 	st	%r1, (%r0)
 	b	%lr
@@ -18,7 +18,7 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
+# %bb.0:
 	itof	%r0, %r0
 	sub	%sp, 4 # short
 	fmul	%r0, %r0, %r0

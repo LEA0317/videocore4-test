@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	test_basic_ops,@function
 test_basic_ops:                         # @test_basic_ops
-# %bb.0:                                # %entry
+# %bb.0:
 	ld	%r3, (%r1)
 	ld	%r4, (%r2)
 	add	%r4, %r3 # short
@@ -82,7 +82,7 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
+# %bb.0:
 	sub	%sp, 4 # short
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	bl	test_basic_ops

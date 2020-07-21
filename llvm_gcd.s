@@ -4,17 +4,16 @@
 	.p2align	2
 	.type	gcd,@function
 gcd:                                    # @gcd
-# %bb.0:                                # %entry
+# %bb.0:
 	cmp	%r0, %r1 # fast
 	beq	LBB0_3
 	nop
 	nop
 	nop
-# %bb.1:                                # %while.body.preheader
+# %bb.1:                                # %.preheader
 	mov	%r2, %r0 # fast
 	mov	%r3, 0
-LBB0_2:                                 # %while.body
-                                        # =>This Inner Loop Header: Depth=1
+LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	mov	%r4, %r3 # fast
 	cmp	%r1, %r2 # fast
 	movlt	%r4, %r1
@@ -27,7 +26,7 @@ LBB0_2:                                 # %while.body
 	mov	%r2, %r0 # fast
 	nop
 	nop
-LBB0_3:                                 # %while.end
+LBB0_3:
 	b	%lr
 	nop
 	nop
@@ -39,7 +38,7 @@ Lfunc_end0:
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
+# %bb.0:
 	lea	%r2, _MergedGlobals(%pc) # PCrel load
 	sub	%sp, 4 # short
 	ld	%r0, (%r2)

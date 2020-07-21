@@ -4,11 +4,10 @@
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
+# %bb.0:
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
-LBB0_2:                                 # %for.body
-                                        # =>This Inner Loop Header: Depth=1
+LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	clz	%r2, %r0
 	add	%r0, 1 # short
 	st	%r2, (%r1)
@@ -17,7 +16,7 @@ LBB0_2:                                 # %for.body
 	add	%r1, 4 # short
 	nop
 	nop
-# %bb.1:                                # %for.cond.cleanup
+# %bb.1:
 	b	%lr
 	mov	%r0, 0
 	nop

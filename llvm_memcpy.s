@@ -4,7 +4,7 @@
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
+# %bb.0:
 	mov	%r0, 0
 	lea	%r1, src(%pc) # PCrel load
 	lea	%r2, dst(%pc) # PCrel load
