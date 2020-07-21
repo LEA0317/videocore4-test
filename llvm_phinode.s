@@ -17,12 +17,8 @@ llvm_phinode:                           # @llvm_phinode
 	nop
 	nop
 # %bb.2:
+	b	LBB0_5
 	add	%r0, -1 # long
-	mov	%r3, %r0 # fast
-LBB0_4:
-	add	%r3, %r1 # short
-	b	%lr
-	mov	%r0, %r3 # fast
 	nop
 	nop
 LBB0_3:
@@ -31,7 +27,9 @@ LBB0_3:
 	add	%r3, 2 # short
 	cmp	%r2, %r4 # fast
 	moveq	%r0, %r3
+LBB0_5:
 	mov	%r3, %r0 # fast
+LBB0_4:
 	add	%r3, %r1 # short
 	b	%lr
 	mov	%r0, %r3 # fast
