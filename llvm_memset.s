@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_memset.cpp"
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
 	mov	%r2, 1
@@ -25,7 +25,7 @@ LBB0_1:                                 # %loadstoreloop
 Lfunc_end0:
 	.size	main, Lfunc_end0-main
                                         # -- End function
-	.type	dst,@object             # @dst
+	.type	dst,@object                     # @dst
 	.data
 	.globl	dst
 	.p2align	2

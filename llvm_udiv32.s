@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_udiv32.cpp"
-	.globl	udiv32                  # -- Begin function udiv32
+	.globl	udiv32                          # -- Begin function udiv32
 	.p2align	2
 	.type	udiv32,@function
 udiv32:                                 # @udiv32
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 92 # short
 	st	%r7, 84 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 88 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -431,18 +431,19 @@ udiv32:                                 # @udiv32
 Lfunc_end0:
 	.size	udiv32, Lfunc_end0-udiv32
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	mov	%r2, 0
 	lea	%r3, z(%pc) # PCrel load
 	lea	%r5, d(%pc) # PCrel load
 	lea	%r4, q(%pc) # PCrel load
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-LBB1_2:                                 # =>This Inner Loop Header: Depth=1
+LBB1_2:                                 # %for.body
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r0, %r2 # fast
 	mov	%r1, %r2 # fast
 	add	%r0, %r3 # short
@@ -459,7 +460,7 @@ LBB1_2:                                 # =>This Inner Loop Header: Depth=1
 	st	%r0, (%r1)
 	nop
 	nop
-# %bb.1:
+# %bb.1:                                # %for.cond.cleanup
 	ld	%r0, (%r4)
 	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
@@ -469,7 +470,7 @@ LBB1_2:                                 # =>This Inner Loop Header: Depth=1
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	z,@object               # @z
+	.type	z,@object                       # @z
 	.data
 	.globl	z
 	.p2align	2
@@ -477,14 +478,14 @@ z:
 	.zero	4096
 	.size	z, 4096
 
-	.type	d,@object               # @d
+	.type	d,@object                       # @d
 	.globl	d
 	.p2align	2
 d:
 	.zero	4096
 	.size	d, 4096
 
-	.type	q,@object               # @q
+	.type	q,@object                       # @q
 	.globl	q
 	.p2align	2
 q:

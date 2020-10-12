@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_memcpy.cpp"
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	mov	%r0, 0
 	lea	%r1, src(%pc) # PCrel load
 	lea	%r2, dst(%pc) # PCrel load
@@ -26,7 +26,7 @@ LBB0_1:                                 # %load-store-loop
 Lfunc_end0:
 	.size	main, Lfunc_end0-main
                                         # -- End function
-	.type	src,@object             # @src
+	.type	src,@object                     # @src
 	.data
 	.globl	src
 	.p2align	2
@@ -34,7 +34,7 @@ src:
 	.zero	4096
 	.size	src, 4096
 
-	.type	dst,@object             # @dst
+	.type	dst,@object                     # @dst
 	.globl	dst
 	.p2align	2
 dst:

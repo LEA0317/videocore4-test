@@ -1,14 +1,15 @@
 	.text
 	.file	"llvm_crc32.cpp"
-	.globl	make_crc_table          # -- Begin function make_crc_table
+	.globl	make_crc_table                  # -- Begin function make_crc_table
 	.p2align	2
 	.type	make_crc_table,@function
 make_crc_table:                         # @make_crc_table
-# %bb.0:
+# %bb.0:                                # %entry
 	mov	%r0, 0
 	lea	%r1, crc_table(%pc) # PCrel load
 	mov	%r2, %r0 # fast
-LBB0_1:                                 # =>This Inner Loop Header: Depth=1
+LBB0_1:                                 # %for.cond1.preheader
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r3, %r2 # fast
 	and	%r5, %r2, 1 # medium
 	add	%r2, 1 # short
@@ -65,7 +66,7 @@ LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 	add	%r1, 4 # short
 	nop
 	nop
-# %bb.2:
+# %bb.2:                                # %for.cond.cleanup
 	b	%lr
 	nop
 	nop
@@ -73,25 +74,26 @@ LBB0_1:                                 # =>This Inner Loop Header: Depth=1
 Lfunc_end0:
 	.size	make_crc_table, Lfunc_end0-make_crc_table
                                         # -- End function
-	.globl	crc32                   # -- Begin function crc32
+	.globl	crc32                           # -- Begin function crc32
 	.p2align	2
 	.type	crc32,@function
 crc32:                                  # @crc32
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 8 # short
 	cmp	%r1, 0 # long imm
 	beq	LBB1_3
 	st	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	mov	%r2, 0
-# %bb.1:                                # %.preheader
+# %bb.1:                                # %for.body.preheader
 	mov	%r3, 0
                                         # implicit-def: $r5
 	b	LBB1_4
 	lea	%r4, crc_table(%pc) # PCrel load
 	mov	%r2, -1 # long
 	nop
-LBB1_6:                                 #   in Loop: Header=BB1_4 Depth=1
+LBB1_6:                                 # %if.end
+                                        #   in Loop: Header=BB1_4 Depth=1
 	lsl	%r6, 3 # short
 	mov	%r7, %r5 # fast
 	add	%r3, 1 # short
@@ -111,14 +113,16 @@ LBB1_6:                                 #   in Loop: Header=BB1_4 Depth=1
 	nop
 	nop
 	nop
-LBB1_4:                                 # =>This Inner Loop Header: Depth=1
+LBB1_4:                                 # %for.body
+                                        # =>This Inner Loop Header: Depth=1
 	and	%r6, %r3, 3 # medium
 	cmp	%r6, 0 # long imm
 	bne	LBB1_6
 	nop
 	nop
 	nop
-# %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
+# %bb.5:                                # %if.then
+                                        #   in Loop: Header=BB1_4 Depth=1
 	mov	%r5, %r3 # fast
 	mov	%r7, %r0 # fast
 	and	%r5, -4 # long
@@ -127,9 +131,9 @@ LBB1_4:                                 # =>This Inner Loop Header: Depth=1
 	ld	%r5, (%r7)
 	nop
 	nop
-LBB1_2:
+LBB1_2:                                 # %for.cond.cleanup.loopexit
 	not	%r2, %r2
-LBB1_3:
+LBB1_3:                                 # %for.cond.cleanup
 	mov	%r0, %r2 # fast
 	ld	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -140,11 +144,11 @@ LBB1_3:
 Lfunc_end1:
 	.size	crc32, Lfunc_end1-crc32
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	bl	make_crc_table
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -165,7 +169,7 @@ main:                                   # @main
 Lfunc_end2:
 	.size	main, Lfunc_end2-main
                                         # -- End function
-	.type	crc_table,@object       # @crc_table
+	.type	crc_table,@object               # @crc_table
 	.data
 	.globl	crc_table
 	.p2align	2
@@ -173,14 +177,14 @@ crc_table:
 	.zero	1024
 	.size	crc_table, 1024
 
-	.type	data,@object            # @data
+	.type	data,@object                    # @data
 	.globl	data
 	.p2align	2
 data:
 	.zero	4096
 	.size	data, 4096
 
-	.type	_MergedGlobals,@object  # @_MergedGlobals
+	.type	_MergedGlobals,@object          # @_MergedGlobals
 	.p2align	2
 _MergedGlobals:
 	.zero	8

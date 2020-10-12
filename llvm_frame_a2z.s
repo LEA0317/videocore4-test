@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_frame_a2z.cpp"
-	.globl	frame_a2z               # -- Begin function frame_a2z
+	.globl	frame_a2z                       # -- Begin function frame_a2z
 	.p2align	2
 	.type	frame_a2z,@function
 frame_a2z:                              # @frame_a2z
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 104 # short
 	mov	%r0, 0
 	st	%r0, 100 (sp)
@@ -140,11 +140,11 @@ frame_a2z:                              # @frame_a2z
 Lfunc_end0:
 	.size	frame_a2z, Lfunc_end0-frame_a2z
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	bl	frame_a2z
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -159,11 +159,11 @@ main:                                   # @main
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	dst,@object             # @dst
+	.type	dst,@object                     # @dst
 	.data
 	.globl	dst
 	.p2align	2
 dst:
-	.long	0                       # 0x0
+	.long	0                               # 0x0
 	.size	dst, 4
 

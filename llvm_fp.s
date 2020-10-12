@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_fp.cpp"
-	.globl	_Z4testPff              # -- Begin function _Z4testPff
+	.globl	_Z4testPff                      # -- Begin function _Z4testPff
 	.p2align	2
 	.type	_Z4testPff,@function
 _Z4testPff:                             # @_Z4testPff
-# %bb.0:
+# %bb.0:                                # %entry
 	fmul	%r1, %r1, %r1
 	st	%r1, (%r0)
 	b	%lr
@@ -14,11 +14,11 @@ _Z4testPff:                             # @_Z4testPff
 Lfunc_end0:
 	.size	_Z4testPff, Lfunc_end0-_Z4testPff
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	itof	%r0, %r0
 	sub	%sp, 4 # short
 	fmul	%r0, %r0, %r0

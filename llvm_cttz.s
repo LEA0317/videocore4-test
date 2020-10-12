@@ -1,13 +1,14 @@
 	.text
 	.file	"llvm_cttz.cpp"
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
-LBB0_2:                                 # =>This Inner Loop Header: Depth=1
+LBB0_2:                                 # %for.body
+                                        # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0 # fast
 	mov	%r3, %r0 # fast
 	add	%r0, 1 # short
@@ -22,7 +23,7 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 	add	%r1, 4 # short
 	nop
 	nop
-# %bb.1:
+# %bb.1:                                # %for.cond.cleanup
 	b	%lr
 	mov	%r0, 0
 	nop
@@ -30,7 +31,7 @@ LBB0_2:                                 # =>This Inner Loop Header: Depth=1
 Lfunc_end0:
 	.size	main, Lfunc_end0-main
                                         # -- End function
-	.type	dst,@object             # @dst
+	.type	dst,@object                     # @dst
 	.data
 	.globl	dst
 	.p2align	2

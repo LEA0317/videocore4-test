@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_select.cpp"
-	.globl	test_movx_1             # -- Begin function test_movx_1
+	.globl	test_movx_1                     # -- Begin function test_movx_1
 	.p2align	2
 	.type	test_movx_1,@function
 test_movx_1:                            # @test_movx_1
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	mov	%r1, 1
 	mov	%r3, 0
@@ -19,11 +19,11 @@ test_movx_1:                            # @test_movx_1
 Lfunc_end0:
 	.size	test_movx_1, Lfunc_end0-test_movx_1
                                         # -- End function
-	.globl	test_movx_2             # -- Begin function test_movx_2
+	.globl	test_movx_2                     # -- Begin function test_movx_2
 	.p2align	2
 	.type	test_movx_2,@function
 test_movx_2:                            # @test_movx_2
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	mov	%r0, 1
 	mov	%r2, 0
@@ -38,11 +38,11 @@ test_movx_2:                            # @test_movx_2
 Lfunc_end1:
 	.size	test_movx_2, Lfunc_end1-test_movx_2
                                         # -- End function
-	.globl	test_movx_3             # -- Begin function test_movx_3
+	.globl	test_movx_3                     # -- Begin function test_movx_3
 	.p2align	2
 	.type	test_movx_3,@function
 test_movx_3:                            # @test_movx_3
-# %bb.0:
+# %bb.0:                                # %entry
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	mov	%r3, 1
 	ld	%r1, (%r0)
@@ -56,11 +56,11 @@ test_movx_3:                            # @test_movx_3
 Lfunc_end2:
 	.size	test_movx_3, Lfunc_end2-test_movx_3
                                         # -- End function
-	.globl	test_movx_4             # -- Begin function test_movx_4
+	.globl	test_movx_4                     # -- Begin function test_movx_4
 	.p2align	2
 	.type	test_movx_4,@function
 test_movx_4:                            # @test_movx_4
-# %bb.0:
+# %bb.0:                                # %entry
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	mov	%r2, 0
 	mov	%r3, 3
@@ -74,11 +74,11 @@ test_movx_4:                            # @test_movx_4
 Lfunc_end3:
 	.size	test_movx_4, Lfunc_end3-test_movx_4
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	bl	test_movx_1
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -107,7 +107,7 @@ main:                                   # @main
 Lfunc_end4:
 	.size	main, Lfunc_end4-main
                                         # -- End function
-	.type	dst,@object             # @dst
+	.type	dst,@object                     # @dst
 	.data
 	.globl	dst
 	.p2align	2
@@ -115,11 +115,11 @@ dst:
 	.zero	16
 	.size	dst, 16
 
-	.type	_MergedGlobals,@object  # @_MergedGlobals
+	.type	_MergedGlobals,@object          # @_MergedGlobals
 	.p2align	2
 _MergedGlobals:
-	.long	1                       # 0x1
-	.long	2                       # 0x2
+	.long	1                               # 0x1
+	.long	2                               # 0x2
 	.size	_MergedGlobals, 8
 
 	.globl	a

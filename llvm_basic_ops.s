@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_basic_ops.cpp"
-	.globl	test_basic_ops          # -- Begin function test_basic_ops
+	.globl	test_basic_ops                  # -- Begin function test_basic_ops
 	.p2align	2
 	.type	test_basic_ops,@function
 test_basic_ops:                         # @test_basic_ops
-# %bb.0:
+# %bb.0:                                # %entry
 	ld	%r3, (%r1)
 	ld	%r4, (%r2)
 	add	%r4, %r3 # short
@@ -78,11 +78,11 @@ test_basic_ops:                         # @test_basic_ops
 Lfunc_end0:
 	.size	test_basic_ops, Lfunc_end0-test_basic_ops
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	lea	%r0, _MergedGlobals(%pc) # PCrel load
 	bl	test_basic_ops
@@ -97,7 +97,7 @@ main:                                   # @main
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object  # @_MergedGlobals
+	.type	_MergedGlobals,@object          # @_MergedGlobals
 	.data
 	.p2align	2
 _MergedGlobals:

@@ -1,35 +1,35 @@
 	.text
 	.file	"llvm_phinode.cpp"
-	.globl	llvm_phinode            # -- Begin function llvm_phinode
+	.globl	llvm_phinode                    # -- Begin function llvm_phinode
 	.p2align	2
 	.type	llvm_phinode,@function
 llvm_phinode:                           # @llvm_phinode
-# %bb.0:
+# %bb.0:                                # %entry
 	cmp	%r0, 0 # long imm
 	beq	LBB0_4
 	mov	%r3, 1
 	nop
 	nop
-# %bb.1:
+# %bb.1:                                # %if.else
 	cmp	%r1, 0 # long imm
 	beq	LBB0_3
 	nop
 	nop
 	nop
-# %bb.2:
+# %bb.2:                                # %if.then2
 	b	LBB0_5
 	add	%r0, -1 # long
 	nop
 	nop
-LBB0_3:
+LBB0_3:                                 # %if.else3
 	mov	%r3, %r0 # fast
 	mov	%r4, 0
 	add	%r3, 2 # short
 	cmp	%r2, %r4 # fast
 	moveq	%r0, %r3
-LBB0_5:
+LBB0_5:                                 # %if.end7
 	mov	%r3, %r0 # fast
-LBB0_4:
+LBB0_4:                                 # %if.end7
 	add	%r3, %r1 # short
 	b	%lr
 	mov	%r0, %r3 # fast
@@ -38,11 +38,11 @@ LBB0_4:
 Lfunc_end0:
 	.size	llvm_phinode, Lfunc_end0-llvm_phinode
                                         # -- End function
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:
+# %bb.0:                                # %entry
 	lea	%r3, _MergedGlobals(%pc) # PCrel load
 	sub	%sp, 4 # short
 	ld	%r0, (%r3)
@@ -102,7 +102,7 @@ main:                                   # @main
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object  # @_MergedGlobals
+	.type	_MergedGlobals,@object          # @_MergedGlobals
 	.data
 	.p2align	2
 _MergedGlobals:

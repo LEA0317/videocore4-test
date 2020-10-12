@@ -1,10 +1,10 @@
 	.text
 	.file	"llvm_memmove.cpp"
-	.globl	main                    # -- Begin function main
+	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %copy_backwards
+# %bb.0:                                # %entry
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
 LBB0_1:                                 # %copy_backwards_loop
@@ -25,12 +25,12 @@ LBB0_1:                                 # %copy_backwards_loop
 Lfunc_end0:
 	.size	main, Lfunc_end0-main
                                         # -- End function
-	.type	dst,@object             # @dst
+	.type	dst,@object                     # @dst
 	.data
 	.globl	dst
 	.p2align	2
 dst:
-	.long	16909060                # 0x1020304
+	.long	16909060                        # 0x1020304
 	.zero	4092
 	.size	dst, 4096
 
