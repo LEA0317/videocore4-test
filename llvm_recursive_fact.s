@@ -36,9 +36,9 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	lea	%r1, _MergedGlobals(%pc) # PCrel load
-	ld	%r2, (%r1)
-	cmp	%r2, 0 # long imm
+	lea	%r0, src(%pc) # PCrel load
+	ld	%r1, (%r0)
+	cmp	%r1, 0 # long imm
 	beq	LBB1_3
 	mov	%r0, 1
 	nop
@@ -47,14 +47,15 @@ main:                                   # @main
 	mov	%r0, 1
 LBB1_2:                                 # %if.end.i
                                         # =>This Inner Loop Header: Depth=1
-	mul	%r0, %r2 # short
-	add	%r2, -1 # long
-	cmp	%r2, 0 # long imm
+	mul	%r0, %r1 # short
+	add	%r1, -1 # long
+	cmp	%r1, 0 # long imm
 	bne	LBB1_2
 	nop
 	nop
 	nop
 LBB1_3:                                 # %_Z14recursive_facti.exit
+	lea	%r1, dst(%pc) # PCrel load
 	b	%lr
 	st	%r0, (%r1)
 	nop
@@ -62,17 +63,18 @@ LBB1_3:                                 # %_Z14recursive_facti.exit
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object          # @_MergedGlobals
+	.type	src,@object                     # @src
 	.data
-	.p2align	2
-_MergedGlobals:
-	.long	7                               # 0x7
-	.long	0                               # 0x0
-	.size	_MergedGlobals, 8
-
 	.globl	src
-.set src, _MergedGlobals
+	.p2align	2
+src:
+	.long	7                               # 0x7
 	.size	src, 4
+
+	.type	dst,@object                     # @dst
 	.globl	dst
-.set dst, _MergedGlobals+4
+	.p2align	2
+dst:
+	.long	0                               # 0x0
 	.size	dst, 4
+

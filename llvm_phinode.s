@@ -43,81 +43,98 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	lea	%r3, _MergedGlobals(%pc) # PCrel load
-	sub	%sp, 4 # short
-	ld	%r0, (%r3)
+	sub	%sp, 12 # short
+	lea	%r4, a(%pc) # PCrel load
+	lea	%r5, b(%pc) # PCrel load
+	st	%r6, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	lea	%r6, c(%pc) # PCrel load
+	ld	%r0, (%r4)
+	ld	%r1, (%r5)
 	bl	llvm_phinode
-	mov	%r2, %r0 # fast
-	mov	%r1, %r0 # fast
+	ld	%r2, (%r6)
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	st	%r7, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%r3, (%r4)
+	lea	%r7, dst(%pc) # PCrel load
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
+	ld	%r3, (%r4)
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
+	ld	%r3, (%r4)
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
+	ld	%r3, (%r4)
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
+	ld	%r3, (%r4)
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
+	ld	%r3, (%r4)
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
-	ld	%r1, (%r3)
-	st	%r0, (%r3)
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
+	ld	%r3, (%r4)
+	st	%r0, (%r7)
 	bl	llvm_phinode
-	mov	%r2, %r1 # fast
-	mov	%r0, %r1 # fast
-	nop
+	mov	%r0, %r3 # fast
+	ld	%r2, (%r6)
+	ld	%r1, (%r5)
 	mov	%r1, 0
-	st	%r0, (%r3)
+	st	%r0, (%r7)
 	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%r7, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%r6, 8 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 4 # short
+	add	%sp, 12 # short
 	mov	%r0, %r1 # fast
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object          # @_MergedGlobals
+	.type	a,@object                       # @a
 	.data
-	.p2align	2
-_MergedGlobals:
-	.zero	128
-	.size	_MergedGlobals, 128
-
 	.globl	a
-.set a, _MergedGlobals
+	.p2align	2
+a:
+	.zero	32
 	.size	a, 32
+
+	.type	b,@object                       # @b
 	.globl	b
-.set b, _MergedGlobals+32
+	.p2align	2
+b:
+	.zero	32
 	.size	b, 32
+
+	.type	c,@object                       # @c
 	.globl	c
-.set c, _MergedGlobals+64
+	.p2align	2
+c:
+	.zero	32
 	.size	c, 32
+
+	.type	dst,@object                     # @dst
 	.globl	dst
-.set dst, _MergedGlobals+96
+	.p2align	2
+dst:
+	.zero	32
 	.size	dst, 32
+

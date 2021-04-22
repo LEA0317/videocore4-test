@@ -43,12 +43,13 @@ Lfunc_end1:
 	.type	test_movx_3,@function
 test_movx_3:                            # @test_movx_3
 # %bb.0:                                # %entry
-	lea	%r0, _MergedGlobals(%pc) # PCrel load
+	lea	%r0, a(%pc) # PCrel load
+	lea	%r1, b(%pc) # PCrel load
 	mov	%r3, 1
-	ld	%r1, (%r0)
 	ld	%r2, (%r0)
+	ld	%r1, (%r1)
 	mov	%r0, 2
-	cmp	%r1, %r2 # fast
+	cmp	%r2, %r1 # fast
 	b	%lr
 	movlt	%r0, %r3
 	nop
@@ -61,7 +62,7 @@ Lfunc_end2:
 	.type	test_movx_4,@function
 test_movx_4:                            # @test_movx_4
 # %bb.0:                                # %entry
-	lea	%r0, _MergedGlobals(%pc) # PCrel load
+	lea	%r0, a(%pc) # PCrel load
 	mov	%r2, 0
 	mov	%r3, 3
 	ld	%r1, (%r0)
@@ -107,24 +108,25 @@ main:                                   # @main
 Lfunc_end4:
 	.size	main, Lfunc_end4-main
                                         # -- End function
-	.type	dst,@object                     # @dst
+	.type	a,@object                       # @a
 	.data
+	.globl	a
+	.p2align	2
+a:
+	.long	1                               # 0x1
+	.size	a, 4
+
+	.type	b,@object                       # @b
+	.globl	b
+	.p2align	2
+b:
+	.long	2                               # 0x2
+	.size	b, 4
+
+	.type	dst,@object                     # @dst
 	.globl	dst
 	.p2align	2
 dst:
 	.zero	16
 	.size	dst, 16
 
-	.type	_MergedGlobals,@object          # @_MergedGlobals
-	.p2align	2
-_MergedGlobals:
-	.long	1                               # 0x1
-	.long	2                               # 0x2
-	.size	_MergedGlobals, 8
-
-	.globl	a
-.set a, _MergedGlobals
-	.size	a, 4
-	.globl	b
-.set b, _MergedGlobals+4
-	.size	b, 4

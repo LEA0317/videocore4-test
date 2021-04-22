@@ -154,11 +154,13 @@ main:                                   # @main
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	nop
 	nop
-	lea	%r2, _MergedGlobals(%pc) # PCrel load
+	lea	%r0, len(%pc) # PCrel load
+	ld	%r1, (%r0)
 	bl	crc32
-	ld	%r1, (%r2)
 	lea	%r0, data(%pc) # PCrel load
 	nop
+	nop
+	lea	%r2, retval(%pc) # PCrel load
 	mov	%r1, 0
 	st	%r0, (%r2)
 	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
@@ -184,15 +186,17 @@ data:
 	.zero	4096
 	.size	data, 4096
 
-	.type	_MergedGlobals,@object          # @_MergedGlobals
-	.p2align	2
-_MergedGlobals:
-	.zero	8
-	.size	_MergedGlobals, 8
-
+	.type	len,@object                     # @len
 	.globl	len
-.set len, _MergedGlobals
+	.p2align	2
+len:
+	.long	0                               # 0x0
 	.size	len, 4
+
+	.type	retval,@object                  # @retval
 	.globl	retval
-.set retval, _MergedGlobals+4
+	.p2align	2
+retval:
+	.long	0                               # 0x0
 	.size	retval, 4
+

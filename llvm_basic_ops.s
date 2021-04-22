@@ -84,11 +84,11 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:                                # %entry
 	sub	%sp, 4 # short
-	lea	%r0, _MergedGlobals(%pc) # PCrel load
+	lea	%r0, res(%pc) # PCrel load
 	bl	test_basic_ops
-	mov	%r2, %r0 # fast
-	mov	%r1, %r0 # fast
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	lea	%r2, rhs(%pc) # PCrel load
+	lea	%r1, lhs(%pc) # PCrel load
 	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
 	add	%sp, 4 # short
@@ -97,19 +97,25 @@ main:                                   # @main
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object          # @_MergedGlobals
+	.type	lhs,@object                     # @lhs
 	.data
-	.p2align	2
-_MergedGlobals:
-	.zero	168
-	.size	_MergedGlobals, 168
-
 	.globl	lhs
-.set lhs, _MergedGlobals
+	.p2align	2
+lhs:
+	.zero	56
 	.size	lhs, 56
+
+	.type	rhs,@object                     # @rhs
 	.globl	rhs
-.set rhs, _MergedGlobals+56
+	.p2align	2
+rhs:
+	.zero	56
 	.size	rhs, 56
+
+	.type	res,@object                     # @res
 	.globl	res
-.set res, _MergedGlobals+112
+	.p2align	2
+res:
+	.zero	56
 	.size	res, 56
+

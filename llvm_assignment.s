@@ -5,11 +5,13 @@
 	.type	assignment,@function
 assignment:                             # @assignment
 # %bb.0:                                # %entry
-	lea	%r0, _MergedGlobals(%pc) # PCrel load
-	ld	%r1, (%r0)
+	lea	%r0, data_signed(%pc) # PCrel load
+	lea	%r1, data_unsigned(%pc) # PCrel load
+	ld	%r2, (%r0)
+	ld	%r3, (%r1)
 	b	%lr
-	st	%r1, (%r0)
-	nop
+	st	%r3, (%r1)
+	st	%r2, (%r0)
 	nop
 Lfunc_end0:
 	.size	assignment, Lfunc_end0-assignment
@@ -32,17 +34,11 @@ main:                                   # @main
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object          # @_MergedGlobals
+	.type	data_signed,@object             # @data_signed
 	.data
+	.globl	data_signed
 	.p2align	2
-_MergedGlobals:
-	.zero	8
-	.long	127                             # 0x7f
-	.long	0                               # 0x0
-	.long	255                             # 0xff
-	.long	0                               # 0x0
-	.long	65535                           # 0xffff
-	.long	0                               # 0x0
+data_signed:
 	.long	4294967232                      # 0xffffffc0
 	.long	0                               # 0x0
 	.long	63                              # 0x3f
@@ -55,11 +51,18 @@ _MergedGlobals:
 	.long	0                               # 0x0
 	.long	32767                           # 0x7fff
 	.long	0                               # 0x0
-	.size	_MergedGlobals, 80
-
-	.globl	data_unsigned
-.set data_unsigned, _MergedGlobals
-	.size	data_unsigned, 32
-	.globl	data_signed
-.set data_signed, _MergedGlobals+32
 	.size	data_signed, 48
+
+	.type	data_unsigned,@object           # @data_unsigned
+	.globl	data_unsigned
+	.p2align	2
+data_unsigned:
+	.zero	8
+	.long	127                             # 0x7f
+	.long	0                               # 0x0
+	.long	255                             # 0xff
+	.long	0                               # 0x0
+	.long	65535                           # 0xffff
+	.long	0                               # 0x0
+	.size	data_unsigned, 32
+

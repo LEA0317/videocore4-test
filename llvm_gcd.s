@@ -40,36 +40,41 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	lea	%r2, _MergedGlobals(%pc) # PCrel load
+	lea	%r0, src0(%pc) # PCrel load
+	lea	%r1, src1(%pc) # PCrel load
 	sub	%sp, 4 # short
-	ld	%r0, (%r2)
 	bl	gcd
-	mov	%r1, %r0 # fast
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	nop
+	ld	%r1, (%r1)
+	ld	%r0, (%r0)
+	lea	%r1, dst(%pc) # PCrel load
 	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
+	st	%r0, (%r1)
 	add	%sp, 4 # short
-	st	%r0, (%r2)
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
                                         # -- End function
-	.type	_MergedGlobals,@object          # @_MergedGlobals
+	.type	src0,@object                    # @src0
 	.data
-	.p2align	2
-_MergedGlobals:
-	.long	1071                            # 0x42f
-	.long	1029                            # 0x405
-	.long	0                               # 0x0
-	.size	_MergedGlobals, 12
-
 	.globl	src0
-.set src0, _MergedGlobals
+	.p2align	2
+src0:
+	.long	1071                            # 0x42f
 	.size	src0, 4
+
+	.type	src1,@object                    # @src1
 	.globl	src1
-.set src1, _MergedGlobals+4
+	.p2align	2
+src1:
+	.long	1029                            # 0x405
 	.size	src1, 4
+
+	.type	dst,@object                     # @dst
 	.globl	dst
-.set dst, _MergedGlobals+8
+	.p2align	2
+dst:
+	.long	0                               # 0x0
 	.size	dst, 4
+
