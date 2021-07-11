@@ -1,5 +1,5 @@
 VC4_DIR		:= ../LLVM-VideoCore4
-BIN_DIR     := $(VC4_DIR)/llvm12.0.0/llvm/build/bin
+BIN_DIR     := $(VC4_DIR)/llvm12.0.1/llvm/build/bin
 
 CPP_FILES := $(wildcard *.cpp)
 OUT_FILES := $(subst .cpp,.s,$(CPP_FILES))
