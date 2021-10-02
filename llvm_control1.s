@@ -7,21 +7,22 @@ llvm_control1:                          # @llvm_control1
 # %bb.0:                                # %entry
 	sub	%sp, 4 # short
 	mov	%r0, 0
+	mov	%r2, 10
+	mov	%r3, 51 # long
 	st	%r0, 0 (sp)
 	ld	%r1, 0 (sp)
-	add	%r1, 4 # short
-LBB0_1:                                 # %while.body
-                                        # =>This Inner Loop Header: Depth=1
-	add	%r1, 1 # short
-	cmp	%r1, 10 # long imm
-	bcs	LBB0_1
-	nop
-	nop
-	nop
-# %bb.2:                                # %while.end
-	mov	%r2, 10
+	mov	%r0, %r1 # fast
+	add	%r0, 5 # short
+	cmp	%r0, %r2 # fast
+	movhi	%r2, %r0
+	mov	%r0, 98 # long
+	sub	%r2, %r1 # short
+	add	%r2, -5 # long
+	cmp	%r2, %r0 # fast
+	movcs	%r0, %r2
+	mov	%r2, 5
+	add	%r1, %r0 # short
 	mov	%r0, 40 # long
-	mov	%r3, 51 # long
 	cmp	%r1, %r2 # fast
 	b	%lr
 	moveq	%r0, %r3
