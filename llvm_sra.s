@@ -6,13 +6,13 @@
 _sra:                                   # @_sra
 # %bb.0:                                # %entry
 	cmp	%r1, 0 # long imm
-	beq	LBB0_2
+	bne	LBB0_1
 	nop
 	nop
 	nop
 # %bb.1:                                # %for.body.preheader
 	add	%r0, 8 # short
-LBB0_3:                                 # %for.body
+LBB0_2:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0 # fast
 	mov	%r3, %r0 # fast
@@ -24,11 +24,11 @@ LBB0_3:                                 # %for.body
 	asr	%r2, %r3 # short
 	st	%r2, (%r0)
 	cmp	%r1, 0 # long imm
-	bne	LBB0_3
+	bne	LBB0_2
 	add	%r0, 12 # short
 	nop
 	nop
-LBB0_2:                                 # %for.cond.cleanup
+LBB0_3:                                 # %for.cond.cleanup
 	b	%lr
 	nop
 	nop

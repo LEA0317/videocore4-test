@@ -7,7 +7,7 @@ main:                                   # @main
 # %bb.0:                                # %entry
 	mov	%r0, 0
 	lea	%r1, dst(%pc) # PCrel load
-LBB0_2:                                 # %for.body
+LBB0_1:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0 # fast
 	mov	%r3, %r0 # fast
@@ -19,11 +19,11 @@ LBB0_2:                                 # %for.body
 	rsub	%r2, 32 # long
 	st	%r2, (%r1)
 	cmp	%r0, 4096 # long imm
-	bne	LBB0_2
+	bne	LBB0_1
 	add	%r1, 4 # short
 	nop
 	nop
-# %bb.1:                                # %for.cond.cleanup
+# %bb.2:                                # %for.cond.cleanup
 	b	%lr
 	mov	%r0, 0
 	nop

@@ -81,11 +81,15 @@ crc32:                                  # @crc32
 # %bb.0:                                # %entry
 	sub	%sp, 8 # short
 	cmp	%r1, 0 # long imm
-	beq	LBB1_3
+	beq	LBB1_2
 	st	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	st	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	mov	%r2, 0
-# %bb.1:                                # %for.body.preheader
+	b	LBB1_3
+	nop
+	nop
+	nop
+# %bb.3:                                # %for.body.preheader
 	mov	%r3, 0
                                         # implicit-def: $r5
 	b	LBB1_4
@@ -105,7 +109,7 @@ LBB1_6:                                 # %if.end
 	lsr	%r7, 8 # short
 	mov	%r2, %r6 # fast
 	cmp	%r1, %r3 # fast
-	beq	LBB1_2
+	beq	LBB1_1
 	eor	%r2, %r7 # short
 	nop
 	nop
@@ -131,9 +135,9 @@ LBB1_4:                                 # %for.body
 	ld	%r5, (%r7)
 	nop
 	nop
-LBB1_2:                                 # %for.cond.cleanup.loopexit
+LBB1_1:                                 # %for.cond.cleanup.loopexit
 	not	%r2, %r2
-LBB1_3:                                 # %for.cond.cleanup
+LBB1_2:                                 # %for.cond.cleanup
 	mov	%r0, %r2 # fast
 	ld	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	ld	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill

@@ -474,7 +474,7 @@ main:                                   # @main
 	lea	%r5, d(%pc) # PCrel load
 	lea	%r4, q(%pc) # PCrel load
 	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-LBB1_2:                                 # %for.body
+LBB1_1:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r0, %r2 # fast
 	mov	%r1, %r2 # fast
@@ -488,11 +488,11 @@ LBB1_2:                                 # %for.body
 	add	%r2, 4 # short
 	add	%r1, %r4 # short
 	cmp	%r2, 4096 # long imm
-	bne	LBB1_2
+	bne	LBB1_1
 	st	%r0, (%r1)
 	nop
 	nop
-# %bb.1:                                # %for.cond.cleanup
+# %bb.2:                                # %for.cond.cleanup
 	ld	%r0, (%r4)
 	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
 	b	%lr
