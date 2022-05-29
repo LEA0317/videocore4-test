@@ -6,13 +6,13 @@
 main:                                   # @main
 # %bb.0:                                # %entry
 	mov	%r0, 0
-	lea	%r1, dst(%pc) # PCrel load
+	lea	%r1, dst(%pc)
 	mov	%r2, 1
 LBB0_1:                                 # %loadstoreloop
                                         # =>This Inner Loop Header: Depth=1
 	stb	%r2, (%r0, %r1)
-	add	%r0, 1 # short
-	cmp	%r0, 4096 # long imm
+	add	%r0, 1
+	cmp	%r0, 4096
 	bcs	LBB0_1
 	nop
 	nop

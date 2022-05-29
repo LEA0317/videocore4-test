@@ -5,27 +5,27 @@
 	.type	_sra,@function
 _sra:                                   # @_sra
 # %bb.0:                                # %entry
-	cmp	%r1, 0 # long imm
+	cmp	%r1, 0
 	bne	LBB0_1
 	nop
 	nop
 	nop
 # %bb.1:                                # %for.body.preheader
-	add	%r0, 8 # short
+	add	%r0, 8
 LBB0_2:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
-	mov	%r2, %r0 # fast
-	mov	%r3, %r0 # fast
-	add	%r1, -1 # long
-	add	%r2, -8 # long
-	add	%r3, -4 # long
+	mov	%r2, %r0
+	mov	%r3, %r0
+	add	%r1, -1
+	add	%r2, -8
+	add	%r3, -4
 	ld	%r2, (%r2)
 	ld	%r3, (%r3)
-	asr	%r2, %r3 # short
+	asr	%r2, %r3
 	st	%r2, (%r0)
-	cmp	%r1, 0 # long imm
+	cmp	%r1, 0
 	bne	LBB0_2
-	add	%r0, 12 # short
+	add	%r0, 12
 	nop
 	nop
 LBB0_3:                                 # %for.cond.cleanup
@@ -41,14 +41,14 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	sub	%sp, 4 # short
+	sub	%sp, 4
 	bl	_sra
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	mov	%r1, 27
-	lea	%r0, p(%pc) # PCrel load
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	lea	%r0, p(%pc)
+	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 4 # short
+	add	%sp, 4
 	mov	%r0, 0
 	nop
 Lfunc_end1:

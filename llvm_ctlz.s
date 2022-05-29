@@ -6,15 +6,15 @@
 main:                                   # @main
 # %bb.0:                                # %entry
 	mov	%r0, 0
-	lea	%r1, dst(%pc) # PCrel load
+	lea	%r1, dst(%pc)
 LBB0_1:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	clz	%r2, %r0
-	add	%r0, 1 # short
+	add	%r0, 1
 	st	%r2, (%r1)
-	cmp	%r0, 4096 # long imm
+	cmp	%r0, 4096
 	bne	LBB0_1
-	add	%r1, 4 # short
+	add	%r1, 4
 	nop
 	nop
 # %bb.2:                                # %for.cond.cleanup

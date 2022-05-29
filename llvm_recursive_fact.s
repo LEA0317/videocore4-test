@@ -5,27 +5,27 @@
 	.type	_Z14recursive_facti,@function
 _Z14recursive_facti:                    # @_Z14recursive_facti
 # %bb.0:                                # %entry
-	cmp	%r0, 0 # long imm
+	cmp	%r0, 0
 	beq	LBB0_3
 	mov	%r1, 1
 	nop
 	nop
 # %bb.1:                                # %if.end.preheader
 	mov	%r3, 1
-	mov	%r2, %r0 # fast
+	mov	%r2, %r0
 LBB0_2:                                 # %if.end
                                         # =>This Inner Loop Header: Depth=1
-	mov	%r1, %r0 # fast
-	add	%r2, -1 # long
-	mul	%r1, %r3 # short
-	cmp	%r2, 0 # long imm
+	mov	%r1, %r0
+	add	%r2, -1
+	mul	%r1, %r3
+	cmp	%r2, 0
 	bne	LBB0_2
-	mov	%r3, %r1 # fast
-	mov	%r0, %r2 # fast
+	mov	%r3, %r1
+	mov	%r0, %r2
 	nop
 LBB0_3:                                 # %return
 	b	%lr
-	mov	%r0, %r1 # fast
+	mov	%r0, %r1
 	nop
 	nop
 Lfunc_end0:
@@ -36,9 +36,9 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	lea	%r0, src(%pc) # PCrel load
+	lea	%r0, src(%pc)
 	ld	%r1, (%r0)
-	cmp	%r1, 0 # long imm
+	cmp	%r1, 0
 	beq	LBB1_3
 	mov	%r0, 1
 	nop
@@ -47,15 +47,15 @@ main:                                   # @main
 	mov	%r0, 1
 LBB1_2:                                 # %if.end.i
                                         # =>This Inner Loop Header: Depth=1
-	mul	%r0, %r1 # short
-	add	%r1, -1 # long
-	cmp	%r1, 0 # long imm
+	mul	%r0, %r1
+	add	%r1, -1
+	cmp	%r1, 0
 	bne	LBB1_2
 	nop
 	nop
 	nop
 LBB1_3:                                 # %_Z14recursive_facti.exit
-	lea	%r1, dst(%pc) # PCrel load
+	lea	%r1, dst(%pc)
 	b	%lr
 	st	%r0, (%r1)
 	nop

@@ -6,64 +6,64 @@
 make_crc_table:                         # @make_crc_table
 # %bb.0:                                # %entry
 	mov	%r0, 0
-	lea	%r1, crc_table(%pc) # PCrel load
-	mov	%r2, %r0 # fast
+	lea	%r1, crc_table(%pc)
+	mov	%r2, %r0
 LBB0_1:                                 # %for.cond1.preheader
                                         # =>This Inner Loop Header: Depth=1
-	mov	%r3, %r2 # fast
-	and	%r5, %r2, 1 # medium
-	add	%r2, 1 # short
-	lsr	%r3, 1 # short
-	mov	%r4, %r3 # fast
-	cmp	%r5, %r0 # fast
-	eor	%r4, -306674912 # long
+	mov	%r3, %r2
+	and	%r5, %r2, 1
+	add	%r2, 1
+	lsr	%r3, 1
+	mov	%r4, %r3
+	cmp	%r5, %r0
+	eor	%r4, -306674912
 	moveq	%r4, %r3
-	and	%r3, %r4, 1 # medium
-	lsr	%r4, 1 # short
-	mov	%r5, %r4 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r5, -306674912 # long
+	and	%r3, %r4, 1
+	lsr	%r4, 1
+	mov	%r5, %r4
+	cmp	%r3, %r0
+	eor	%r5, -306674912
 	moveq	%r5, %r4
-	and	%r3, %r5, 1 # medium
-	lsr	%r5, 1 # short
-	mov	%r4, %r5 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r4, -306674912 # long
+	and	%r3, %r5, 1
+	lsr	%r5, 1
+	mov	%r4, %r5
+	cmp	%r3, %r0
+	eor	%r4, -306674912
 	moveq	%r4, %r5
-	and	%r3, %r4, 1 # medium
-	lsr	%r4, 1 # short
-	mov	%r5, %r4 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r5, -306674912 # long
+	and	%r3, %r4, 1
+	lsr	%r4, 1
+	mov	%r5, %r4
+	cmp	%r3, %r0
+	eor	%r5, -306674912
 	moveq	%r5, %r4
-	and	%r3, %r5, 1 # medium
-	lsr	%r5, 1 # short
-	mov	%r4, %r5 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r4, -306674912 # long
+	and	%r3, %r5, 1
+	lsr	%r5, 1
+	mov	%r4, %r5
+	cmp	%r3, %r0
+	eor	%r4, -306674912
 	moveq	%r4, %r5
-	and	%r3, %r4, 1 # medium
-	lsr	%r4, 1 # short
-	mov	%r5, %r4 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r5, -306674912 # long
+	and	%r3, %r4, 1
+	lsr	%r4, 1
+	mov	%r5, %r4
+	cmp	%r3, %r0
+	eor	%r5, -306674912
 	moveq	%r5, %r4
-	and	%r3, %r5, 1 # medium
-	lsr	%r5, 1 # short
-	mov	%r4, %r5 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r4, -306674912 # long
+	and	%r3, %r5, 1
+	lsr	%r5, 1
+	mov	%r4, %r5
+	cmp	%r3, %r0
+	eor	%r4, -306674912
 	moveq	%r4, %r5
-	and	%r3, %r4, 1 # medium
-	lsr	%r4, 1 # short
-	mov	%r5, %r4 # fast
-	cmp	%r3, %r0 # fast
-	eor	%r5, -306674912 # long
+	and	%r3, %r4, 1
+	lsr	%r4, 1
+	mov	%r5, %r4
+	cmp	%r3, %r0
+	eor	%r5, -306674912
 	moveq	%r5, %r4
 	st	%r5, (%r1)
-	cmp	%r2, 256 # long imm
+	cmp	%r2, 256
 	bne	LBB0_1
-	add	%r1, 4 # short
+	add	%r1, 4
 	nop
 	nop
 # %bb.2:                                # %for.cond.cleanup
@@ -79,11 +79,11 @@ Lfunc_end0:
 	.type	crc32,@function
 crc32:                                  # @crc32
 # %bb.0:                                # %entry
-	sub	%sp, 8 # short
-	cmp	%r1, 0 # long imm
+	sub	%sp, 8
+	cmp	%r1, 0
 	beq	LBB1_2
-	st	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	st	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%r7, 0 (%sp)                    # 4-byte Folded Spill
+	st	%r6, 4 (%sp)                    # 4-byte Folded Spill
 	mov	%r2, 0
 	b	LBB1_3
 	nop
@@ -93,24 +93,24 @@ crc32:                                  # @crc32
 	mov	%r3, 0
                                         # implicit-def: $r5
 	b	LBB1_4
-	lea	%r4, crc_table(%pc) # PCrel load
-	mov	%r2, -1 # long
+	lea	%r4, crc_table(%pc)
+	mov	%r2, -1
 	nop
 LBB1_6:                                 # %if.end
                                         #   in Loop: Header=BB1_4 Depth=1
-	lsl	%r6, 3 # short
-	mov	%r7, %r5 # fast
-	add	%r3, 1 # short
-	lsr	%r7, %r6 # short
-	eor	%r7, %r2 # short
-	and	%r7, 255 # long
+	lsl	%r6, 3
+	mov	%r7, %r5
+	add	%r3, 1
+	lsr	%r7, %r6
+	eor	%r7, %r2
+	and	%r7, 255
 	ld	%r6, (%r4, %r7)
-	mov	%r7, %r2 # fast
-	lsr	%r7, 8 # short
-	mov	%r2, %r6 # fast
-	cmp	%r1, %r3 # fast
+	mov	%r7, %r2
+	lsr	%r7, 8
+	mov	%r2, %r6
+	cmp	%r1, %r3
 	beq	LBB1_1
-	eor	%r2, %r7 # short
+	eor	%r2, %r7
 	nop
 	nop
 	b	LBB1_4
@@ -119,18 +119,18 @@ LBB1_6:                                 # %if.end
 	nop
 LBB1_4:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
-	and	%r6, %r3, 3 # medium
-	cmp	%r6, 0 # long imm
+	and	%r6, %r3, 3
+	cmp	%r6, 0
 	bne	LBB1_6
 	nop
 	nop
 	nop
 # %bb.5:                                # %if.then
                                         #   in Loop: Header=BB1_4 Depth=1
-	mov	%r5, %r3 # fast
-	mov	%r7, %r0 # fast
-	and	%r5, -4 # long
-	add	%r7, %r5 # short
+	mov	%r5, %r3
+	mov	%r7, %r0
+	and	%r5, -4
+	add	%r7, %r5
 	b	LBB1_6
 	ld	%r5, (%r7)
 	nop
@@ -138,11 +138,11 @@ LBB1_4:                                 # %for.body
 LBB1_1:                                 # %for.cond.cleanup.loopexit
 	not	%r2, %r2
 LBB1_2:                                 # %for.cond.cleanup
-	mov	%r0, %r2 # fast
-	ld	%r7, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
-	ld	%r6, 4 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	mov	%r0, %r2
+	ld	%r7, 0 (%sp)                    # 4-byte Folded Spill
+	ld	%r6, 4 (%sp)                    # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 8 # short
+	add	%sp, 8
 	nop
 	nop
 Lfunc_end1:
@@ -153,24 +153,24 @@ Lfunc_end1:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	sub	%sp, 4 # short
+	sub	%sp, 4
 	bl	make_crc_table
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	nop
 	nop
-	lea	%r0, len(%pc) # PCrel load
+	lea	%r0, len(%pc)
 	ld	%r1, (%r0)
 	bl	crc32
-	lea	%r0, data(%pc) # PCrel load
+	lea	%r0, data(%pc)
 	nop
 	nop
-	lea	%r2, retval(%pc) # PCrel load
+	lea	%r2, retval(%pc)
 	mov	%r1, 0
 	st	%r0, (%r2)
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 4 # short
-	mov	%r0, %r1 # fast
+	add	%sp, 4
+	mov	%r0, %r1
 	nop
 Lfunc_end2:
 	.size	main, Lfunc_end2-main

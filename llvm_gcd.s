@@ -5,26 +5,26 @@
 	.type	gcd,@function
 gcd:                                    # @gcd
 # %bb.0:                                # %entry
-	cmp	%r0, %r1 # fast
+	cmp	%r0, %r1
 	beq	LBB0_3
 	nop
 	nop
 	nop
 # %bb.1:                                # %while.body.preheader
-	mov	%r2, %r0 # fast
+	mov	%r2, %r0
 	mov	%r3, 0
 LBB0_2:                                 # %while.body
                                         # =>This Inner Loop Header: Depth=1
-	mov	%r4, %r3 # fast
-	cmp	%r1, %r2 # fast
+	mov	%r4, %r3
+	cmp	%r1, %r2
 	movlt	%r4, %r1
-	cmp	%r1, %r2 # fast
+	cmp	%r1, %r2
 	movlt	%r2, %r3
-	sub	%r0, %r4 # short
-	sub	%r1, %r2 # short
-	cmp	%r0, %r1 # fast
+	sub	%r0, %r4
+	sub	%r1, %r2
+	cmp	%r0, %r1
 	bne	LBB0_2
-	mov	%r2, %r0 # fast
+	mov	%r2, %r0
 	nop
 	nop
 LBB0_3:                                 # %while.end
@@ -40,18 +40,18 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	lea	%r0, src0(%pc) # PCrel load
-	lea	%r1, src1(%pc) # PCrel load
-	sub	%sp, 4 # short
+	lea	%r0, src0(%pc)
+	lea	%r1, src1(%pc)
+	sub	%sp, 4
 	bl	gcd
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	ld	%r1, (%r1)
 	ld	%r0, (%r0)
-	lea	%r1, dst(%pc) # PCrel load
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	lea	%r1, dst(%pc)
+	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	b	%lr
 	st	%r0, (%r1)
-	add	%sp, 4 # short
+	add	%sp, 4
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

@@ -5,8 +5,8 @@
 	.type	assignment,@function
 assignment:                             # @assignment
 # %bb.0:                                # %entry
-	lea	%r0, data_signed(%pc) # PCrel load
-	lea	%r1, data_unsigned(%pc) # PCrel load
+	lea	%r0, data_signed(%pc)
+	lea	%r1, data_unsigned(%pc)
 	ld	%r2, (%r0)
 	ld	%r3, (%r1)
 	b	%lr
@@ -21,14 +21,14 @@ Lfunc_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %entry
-	sub	%sp, 4 # short
+	sub	%sp, 4
 	bl	assignment
-	st	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	nop
 	nop
-	ld	%lr, 0 (%sp) # s16-bit displacement # 4-byte Folded Spill
+	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	b	%lr
-	add	%sp, 4 # short
+	add	%sp, 4
 	mov	%r0, 0
 	nop
 Lfunc_end1:
