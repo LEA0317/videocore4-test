@@ -11,19 +11,12 @@ make_crc_table:                         # @make_crc_table
 LBB0_1:                                 # %for.cond1.preheader
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r3, %r2
-	and	%r5, %r2, 1
-	add	%r2, 1
 	lsr	%r3, 1
-	mov	%r4, %r3
-	cmp	%r5, %r0
-	eor	%r4, -306674912
-	moveq	%r4, %r3
-	and	%r3, %r4, 1
-	lsr	%r4, 1
-	mov	%r5, %r4
-	cmp	%r3, %r0
+	and	%r4, %r2, 1
+	mov	%r5, %r3
+	cmp	%r4, %r0
 	eor	%r5, -306674912
-	moveq	%r5, %r4
+	moveq	%r5, %r3
 	and	%r3, %r5, 1
 	lsr	%r5, 1
 	mov	%r4, %r5
@@ -60,7 +53,14 @@ LBB0_1:                                 # %for.cond1.preheader
 	cmp	%r3, %r0
 	eor	%r5, -306674912
 	moveq	%r5, %r4
-	st	%r5, (%r1)
+	and	%r3, %r5, 1
+	lsr	%r5, 1
+	mov	%r4, %r5
+	cmp	%r3, %r0
+	eor	%r4, -306674912
+	moveq	%r4, %r5
+	add	%r2, 1
+	st	%r4, (%r1)
 	cmp	%r2, 256
 	bne	LBB0_1
 	add	%r1, 4
@@ -82,9 +82,9 @@ crc32:                                  # @crc32
 	sub	%sp, 8
 	cmp	%r1, 0
 	beq	LBB1_2
+	mov	%r2, 0
 	st	%r7, 0 (%sp)                    # 4-byte Folded Spill
 	st	%r6, 4 (%sp)                    # 4-byte Folded Spill
-	mov	%r2, 0
 	b	LBB1_3
 	nop
 	nop
@@ -100,15 +100,15 @@ LBB1_6:                                 # %if.end
                                         #   in Loop: Header=BB1_4 Depth=1
 	lsl	%r6, 3
 	mov	%r7, %r5
-	add	%r3, 1
 	lsr	%r7, %r6
 	eor	%r7, %r2
 	and	%r7, 255
 	ld	%r6, (%r4, %r7)
 	mov	%r7, %r2
+	add	%r3, 1
+	cmp	%r1, %r3
 	lsr	%r7, 8
 	mov	%r2, %r6
-	cmp	%r1, %r3
 	beq	LBB1_1
 	eor	%r2, %r7
 	nop
@@ -128,8 +128,8 @@ LBB1_4:                                 # %for.body
 # %bb.5:                                # %if.then
                                         #   in Loop: Header=BB1_4 Depth=1
 	mov	%r5, %r3
-	mov	%r7, %r0
 	and	%r5, -4
+	mov	%r7, %r0
 	add	%r7, %r5
 	b	LBB1_6
 	ld	%r5, (%r7)

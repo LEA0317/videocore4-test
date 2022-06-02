@@ -29,8 +29,8 @@ main:                                   # @main
 	lea	%r1, dst(%pc)
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	b	%lr
-	st	%r0, (%r1)
 	add	%sp, 4
+	st	%r0, (%r1)
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

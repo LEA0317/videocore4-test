@@ -15,13 +15,13 @@ _sra:                                   # @_sra
 LBB0_2:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0
-	mov	%r3, %r0
-	add	%r1, -1
 	add	%r2, -8
-	add	%r3, -4
 	ld	%r2, (%r2)
+	mov	%r3, %r0
+	add	%r3, -4
 	ld	%r3, (%r3)
 	asr	%r2, %r3
+	add	%r1, -1
 	st	%r2, (%r0)
 	cmp	%r1, 0
 	bne	LBB0_2

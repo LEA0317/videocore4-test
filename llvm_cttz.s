@@ -11,12 +11,12 @@ LBB0_1:                                 # %for.body
                                         # =>This Inner Loop Header: Depth=1
 	mov	%r2, %r0
 	mov	%r3, %r0
-	add	%r0, 1
 	add	%r2, -1
 	not	%r3, %r3
 	and	%r3, %r2
 	clz	%r2, %r3
 	rsub	%r2, 32
+	add	%r0, 1
 	st	%r2, (%r1)
 	cmp	%r0, 4096
 	bne	LBB0_1

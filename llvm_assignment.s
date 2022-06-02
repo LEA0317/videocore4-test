@@ -6,12 +6,13 @@
 assignment:                             # @assignment
 # %bb.0:                                # %entry
 	lea	%r0, data_signed(%pc)
-	lea	%r1, data_unsigned(%pc)
-	ld	%r2, (%r0)
-	ld	%r3, (%r1)
+	ld	%r1, (%r0)
+	st	%r1, (%r0)
+	lea	%r0, data_unsigned(%pc)
+	ld	%r1, (%r0)
 	b	%lr
-	st	%r3, (%r1)
-	st	%r2, (%r0)
+	st	%r1, (%r0)
+	nop
 	nop
 Lfunc_end0:
 	.size	assignment, Lfunc_end0-assignment

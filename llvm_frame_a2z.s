@@ -85,57 +85,57 @@ frame_a2z:                              # @frame_a2z
 	st	%r0, 0 (sp)
 	ld	%r1, 100 (sp)
 	ld	%r0, 96 (sp)
-	ld	%r2, 92 (sp)
-	ld	%r3, 88 (sp)
-	ld	%r4, 84 (sp)
+	add	%r0, %r1
+	ld	%r1, 92 (sp)
+	add	%r0, %r1
+	ld	%r1, 88 (sp)
+	add	%r0, %r1
+	ld	%r1, 84 (sp)
 	add	%r0, %r1
 	ld	%r1, 80 (sp)
-	add	%r0, %r2
-	ld	%r2, 64 (sp)
-	add	%r0, %r3
-	ld	%r3, 72 (sp)
-	add	%r0, %r4
-	ld	%r4, 68 (sp)
 	add	%r0, %r1
 	ld	%r1, 64 (sp)
-	add	%r0, %r2
-	ld	%r2, 60 (sp)
-	add	%r0, %r3
-	ld	%r3, 56 (sp)
-	add	%r0, %r4
-	ld	%r4, 52 (sp)
+	add	%r0, %r1
+	ld	%r1, 72 (sp)
+	add	%r0, %r1
+	ld	%r1, 68 (sp)
+	add	%r0, %r1
+	ld	%r1, 64 (sp)
+	add	%r0, %r1
+	ld	%r1, 60 (sp)
+	add	%r0, %r1
+	ld	%r1, 56 (sp)
+	add	%r0, %r1
+	ld	%r1, 52 (sp)
 	add	%r0, %r1
 	ld	%r1, 48 (sp)
-	add	%r0, %r2
-	ld	%r2, 44 (sp)
-	add	%r0, %r3
-	ld	%r3, 40 (sp)
-	add	%r0, %r4
-	ld	%r4, 36 (sp)
+	add	%r0, %r1
+	ld	%r1, 44 (sp)
+	add	%r0, %r1
+	ld	%r1, 40 (sp)
+	add	%r0, %r1
+	ld	%r1, 36 (sp)
 	add	%r0, %r1
 	ld	%r1, 32 (sp)
-	add	%r0, %r2
-	ld	%r2, 28 (sp)
-	add	%r0, %r3
-	ld	%r3, 24 (sp)
-	add	%r0, %r4
-	ld	%r4, 20 (sp)
+	add	%r0, %r1
+	ld	%r1, 28 (sp)
+	add	%r0, %r1
+	ld	%r1, 24 (sp)
+	add	%r0, %r1
+	ld	%r1, 20 (sp)
 	add	%r0, %r1
 	ld	%r1, 16 (sp)
-	add	%r0, %r2
-	ld	%r2, 12 (sp)
-	add	%r0, %r3
-	ld	%r3, 8 (sp)
-	add	%r0, %r4
-	ld	%r4, 4 (sp)
+	add	%r0, %r1
+	ld	%r1, 12 (sp)
+	add	%r0, %r1
+	ld	%r1, 8 (sp)
+	add	%r0, %r1
+	ld	%r1, 4 (sp)
 	add	%r0, %r1
 	ld	%r1, 0 (sp)
-	add	%r0, %r2
-	add	%r0, %r3
-	add	%r0, %r4
 	b	%lr
-	add	%r0, %r1
 	add	%sp, 104
+	add	%r0, %r1
 	nop
 Lfunc_end0:
 	.size	frame_a2z, Lfunc_end0-frame_a2z
@@ -153,8 +153,8 @@ main:                                   # @main
 	lea	%r1, dst(%pc)
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	b	%lr
-	st	%r0, (%r1)
 	add	%sp, 4
+	st	%r0, (%r1)
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main

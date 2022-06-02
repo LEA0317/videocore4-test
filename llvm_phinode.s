@@ -44,61 +44,61 @@ Lfunc_end0:
 main:                                   # @main
 # %bb.0:                                # %entry
 	sub	%sp, 12
+	st	%r7, 4 (%sp)                    # 4-byte Folded Spill
 	lea	%r4, a(%pc)
 	lea	%r5, b(%pc)
-	st	%r6, 8 (%sp)                    # 4-byte Folded Spill
-	lea	%r6, c(%pc)
+	lea	%r7, c(%pc)
 	ld	%r0, (%r4)
 	ld	%r1, (%r5)
 	bl	llvm_phinode
-	ld	%r2, (%r6)
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
-	st	%r7, 4 (%sp)                    # 4-byte Folded Spill
+	st	%r6, 8 (%sp)                    # 4-byte Folded Spill
+	ld	%r2, (%r7)
+	lea	%r6, dst(%pc)
 	ld	%r3, (%r4)
-	lea	%r7, dst(%pc)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	ld	%r3, (%r4)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	ld	%r3, (%r4)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	ld	%r3, (%r4)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	ld	%r3, (%r4)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	ld	%r3, (%r4)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	ld	%r3, (%r4)
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	bl	llvm_phinode
 	mov	%r0, %r3
-	ld	%r2, (%r6)
+	ld	%r2, (%r7)
 	ld	%r1, (%r5)
 	mov	%r1, 0
-	st	%r0, (%r7)
+	st	%r0, (%r6)
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
 	ld	%r7, 4 (%sp)                    # 4-byte Folded Spill
 	ld	%r6, 8 (%sp)                    # 4-byte Folded Spill

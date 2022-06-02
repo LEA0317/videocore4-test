@@ -7,14 +7,14 @@ test_movx_1:                            # @test_movx_1
 # %bb.0:                                # %entry
 	sub	%sp, 4
 	mov	%r1, 1
-	mov	%r3, 0
-	mov	%r0, 3
 	st	%r1, 0 (sp)
 	ld	%r2, 0 (sp)
+	mov	%r3, 0
 	cmp	%r2, %r3
+	mov	%r0, 3
 	b	%lr
-	moveq	%r0, %r1
 	add	%sp, 4
+	moveq	%r0, %r1
 	nop
 Lfunc_end0:
 	.size	test_movx_1, Lfunc_end0-test_movx_1
@@ -26,14 +26,14 @@ test_movx_2:                            # @test_movx_2
 # %bb.0:                                # %entry
 	sub	%sp, 4
 	mov	%r0, 1
-	mov	%r2, 0
-	mov	%r3, 3
 	st	%r0, 0 (sp)
 	ld	%r1, 0 (sp)
+	mov	%r2, 0
+	mov	%r3, 3
 	cmp	%r1, %r2
 	b	%lr
-	moveq	%r0, %r3
 	add	%sp, 4
+	moveq	%r0, %r3
 	nop
 Lfunc_end1:
 	.size	test_movx_2, Lfunc_end1-test_movx_2
@@ -44,12 +44,12 @@ Lfunc_end1:
 test_movx_3:                            # @test_movx_3
 # %bb.0:                                # %entry
 	lea	%r0, a(%pc)
-	lea	%r1, b(%pc)
-	mov	%r3, 1
+	ld	%r1, (%r0)
+	lea	%r0, b(%pc)
 	ld	%r2, (%r0)
-	ld	%r1, (%r1)
+	mov	%r3, 1
+	cmp	%r1, %r2
 	mov	%r0, 2
-	cmp	%r2, %r1
 	b	%lr
 	movlt	%r0, %r3
 	nop
@@ -63,11 +63,11 @@ Lfunc_end2:
 test_movx_4:                            # @test_movx_4
 # %bb.0:                                # %entry
 	lea	%r0, a(%pc)
+	ld	%r1, (%r0)
 	mov	%r2, 0
 	mov	%r3, 3
-	ld	%r1, (%r0)
-	mov	%r0, 1
 	cmp	%r1, %r2
+	mov	%r0, 1
 	b	%lr
 	moveq	%r0, %r3
 	nop

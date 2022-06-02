@@ -25,8 +25,8 @@ main:                                   # @main
 	st	%r0, 0 (sp)
 	ld	%r0, 0 (sp)
 	b	%lr
-	ftoi	%r0, %r0
 	add	%sp, 4
+	ftoi	%r0, %r0
 	nop
 Lfunc_end1:
 	.size	main, Lfunc_end1-main
