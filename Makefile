@@ -1,5 +1,5 @@
 VC4_DIR		:= ../LLVM-VideoCore4
-BIN_DIR     := $(VC4_DIR)/llvm14.0.4/llvm/build/bin
+BIN_DIR     := $(VC4_DIR)/build/bin
 
 CPP_FILES := $(wildcard *.cpp)
 OUT_FILES := $(subst .cpp,.s,$(CPP_FILES))
@@ -19,6 +19,7 @@ LLC_FLAGS   += -relocation-model=static
 LLC_FLAGS   += -enable-ipra
 LLC_FLAGS   += -time-passes
 LLC_FLAGS   += -O3
+LLC_FLAGS   += -show-mc-encoding
 #LLC_FLAGS   += -debug
 
 .PHONY: all
