@@ -4,32 +4,34 @@
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
-	mov	%r0, 0
-	lea	%r1, dst(%pc)
-LBB0_1:                                 # %for.body
-                                        # =>This Inner Loop Header: Depth=1
-	clz	%r2, %r0
-	add	%r0, 1
-	st	%r2, (%r1)
-	cmp	%r0, 4096
-	bne	LBB0_1
-	add	%r1, 4
-	nop
-	nop
-# %bb.2:                                # %for.cond.cleanup
-	b	%lr
-	mov	%r0, 0
-	nop
-	nop
-Lfunc_end0:
-	.size	main, Lfunc_end0-main
+# %bb.0:
+	mov	%r0, 0                          # encoding: [0x00,0x00]
+	lea	%r1, dst(%pc)                   # encoding: []
+                                        #   fixup A - offset: 0, value: dst, kind: 
+BB0_1:                                  # =>This Inner Loop Header: Depth=1
+	clz	%r2, %r0                        # encoding: [0x00,0x00,0x00,0x00]
+	add	%r0, 1                          # encoding: [0x00,0x00]
+	st	%r2, (%r1)                      # encoding: [0x00,0x00]
+	cmp	%r0, 4096                       # encoding: []
+	bne	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
+	add	%r1, 4                          # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+# %bb.2:
+	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
+	mov	%r0, 0                          # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+$func_end0:
+	.size	main, ($func_end0)-main
                                         # -- End function
 	.type	dst,@object                     # @dst
 	.data
 	.globl	dst
 	.p2align	2
 dst:
-	.zero	16384
+	.space	16384
 	.size	dst, 16384
 
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.section	".note.GNU-stack","",@progbits

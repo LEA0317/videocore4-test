@@ -4,57 +4,61 @@
 	.p2align	2
 	.type	gcd,@function
 gcd:                                    # @gcd
-# %bb.0:                                # %entry
-	cmp	%r0, %r1
-	beq	LBB0_3
-	nop
-	nop
-	nop
-# %bb.1:                                # %while.body.preheader
-	mov	%r2, %r0
-	mov	%r3, 0
-LBB0_2:                                 # %while.body
-                                        # =>This Inner Loop Header: Depth=1
-	mov	%r4, %r3
-	cmp	%r1, %r2
-	movlt	%r4, %r1
-	cmp	%r1, %r2
-	movlt	%r2, %r3
-	sub	%r0, %r4
-	sub	%r1, %r2
-	cmp	%r0, %r1
-	bne	LBB0_2
-	mov	%r2, %r0
-	nop
-	nop
-LBB0_3:                                 # %while.end
-	b	%lr
-	nop
-	nop
-	nop
-Lfunc_end0:
-	.size	gcd, Lfunc_end0-gcd
+# %bb.0:
+	cmp	%r0, %r1                        # encoding: [0x00,0x00]
+	beq	BB0_3                           # encoding: [0x00,0x00,0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+# %bb.1:                                # %.preheader
+	mov	%r2, %r0                        # encoding: [0x00,0x00]
+	mov	%r3, 0                          # encoding: [0x00,0x00]
+BB0_2:                                  # =>This Inner Loop Header: Depth=1
+	mov	%r4, %r3                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	movlt	%r4, %r1                        # encoding: [0x00,0x00,0x00,0x00]
+	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	movlt	%r2, %r3                        # encoding: [0x00,0x00,0x00,0x00]
+	sub	%r0, %r4                        # encoding: [0x00,0x00]
+	sub	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r0, %r1                        # encoding: [0x00,0x00]
+	bne	BB0_2                           # encoding: [0x00,0x00,0x00,0x00]
+	mov	%r2, %r0                        # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+BB0_3:
+	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+$func_end0:
+	.size	gcd, ($func_end0)-gcd
                                         # -- End function
 	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
-	lea	%r0, src0(%pc)
-	lea	%r1, src1(%pc)
-	sub	%sp, 4
-	bl	gcd
+# %bb.0:
+	lea	%r0, src0(%pc)                  # encoding: []
+                                        #   fixup A - offset: 0, value: src0, kind: 
+	lea	%r1, src1(%pc)                  # encoding: []
+                                        #   fixup A - offset: 0, value: src1, kind: 
+	sub	%sp, 4                          # encoding: [0x00,0x00]
+	bl	gcd                             # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
-	ld	%r1, (%r1)
-	ld	%r0, (%r0)
-	lea	%r1, dst(%pc)
+                                        # encoding: [0x00,0x00,0x00,0x00]
+	ld	%r1, (%r1)                      # encoding: [0x00,0x00]
+	ld	%r0, (%r0)                      # encoding: [0x00,0x00]
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
-	b	%lr
-	add	%sp, 4
-	st	%r0, (%r1)
-	nop
-Lfunc_end1:
-	.size	main, Lfunc_end1-main
+                                        # encoding: [0x00,0x00,0x00,0x00]
+	lea	%r1, dst(%pc)                   # encoding: []
+                                        #   fixup A - offset: 0, value: dst, kind: 
+	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
+	add	%sp, 4                          # encoding: [0x00,0x00]
+	st	%r0, (%r1)                      # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+$func_end1:
+	.size	main, ($func_end1)-main
                                         # -- End function
 	.type	src0,@object                    # @src0
 	.data
@@ -78,3 +82,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.section	".note.GNU-stack","",@progbits

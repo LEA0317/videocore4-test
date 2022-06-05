@@ -4,55 +4,57 @@
 	.p2align	2
 	.type	_sra,@function
 _sra:                                   # @_sra
-# %bb.0:                                # %entry
-	cmp	%r1, 0
-	bne	LBB0_1
-	nop
-	nop
-	nop
-# %bb.1:                                # %for.body.preheader
-	add	%r0, 8
-LBB0_2:                                 # %for.body
-                                        # =>This Inner Loop Header: Depth=1
-	mov	%r2, %r0
-	add	%r2, -8
-	ld	%r2, (%r2)
-	mov	%r3, %r0
-	add	%r3, -4
-	ld	%r3, (%r3)
-	asr	%r2, %r3
-	add	%r1, -1
-	st	%r2, (%r0)
-	cmp	%r1, 0
-	bne	LBB0_2
-	add	%r0, 12
-	nop
-	nop
-LBB0_3:                                 # %for.cond.cleanup
-	b	%lr
-	nop
-	nop
-	nop
-Lfunc_end0:
-	.size	_sra, Lfunc_end0-_sra
+# %bb.0:
+	cmp	%r1, 0                          # encoding: []
+	bne	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+# %bb.1:                                # %.preheader
+	add	%r0, 8                          # encoding: [0x00,0x00]
+BB0_2:                                  # =>This Inner Loop Header: Depth=1
+	mov	%r2, %r0                        # encoding: [0x00,0x00]
+	add	%r2, -8                         # encoding: [0x00,0x00]
+	ld	%r2, (%r2)                      # encoding: [0x00,0x00]
+	mov	%r3, %r0                        # encoding: [0x00,0x00]
+	add	%r3, -4                         # encoding: [0x00,0x00]
+	ld	%r3, (%r3)                      # encoding: [0x00,0x00]
+	asr	%r2, %r3                        # encoding: [0x00,0x00]
+	add	%r1, -1                         # encoding: [0x00,0x00]
+	st	%r2, (%r0)                      # encoding: [0x00,0x00]
+	cmp	%r1, 0                          # encoding: []
+	bne	BB0_2                           # encoding: [0x00,0x00,0x00,0x00]
+	add	%r0, 12                         # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+BB0_3:
+	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+	nop                                     # encoding: []
+$func_end0:
+	.size	_sra, ($func_end0)-_sra
                                         # -- End function
 	.globl	main                            # -- Begin function main
 	.p2align	2
 	.type	main,@function
 main:                                   # @main
-# %bb.0:                                # %entry
-	sub	%sp, 4
-	bl	_sra
+# %bb.0:
+	sub	%sp, 4                          # encoding: [0x00,0x00]
+	bl	_sra                            # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
-	mov	%r1, 27
-	lea	%r0, p(%pc)
+                                        # encoding: [0x00,0x00,0x00,0x00]
+	mov	%r1, 27                         # encoding: [0x00,0x00]
+	lea	%r0, p(%pc)                     # encoding: []
+                                        #   fixup A - offset: 0, value: p, kind: 
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
-	b	%lr
-	add	%sp, 4
-	mov	%r0, 0
-	nop
-Lfunc_end1:
-	.size	main, Lfunc_end1-main
+                                        # encoding: [0x00,0x00,0x00,0x00]
+	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
+	add	%sp, 4                          # encoding: [0x00,0x00]
+	mov	%r0, 0                          # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+$func_end1:
+	.size	main, ($func_end1)-main
                                         # -- End function
 	.type	p,@object                       # @p
 	.data
@@ -142,3 +144,5 @@ p:
 	.long	4294967295                      # 0xffffffff
 	.size	p, 324
 
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.section	".note.GNU-stack","",@progbits
