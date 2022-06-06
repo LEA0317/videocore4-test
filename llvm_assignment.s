@@ -6,11 +6,11 @@
 assignment:                             # @assignment
 # %bb.0:
 	lea	%r0, data_signed(%pc)           # encoding: []
-                                        #   fixup A - offset: 0, value: data_signed, kind: 
+                                        #   fixup A - offset: 0, value: data_signed, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	st	%r1, (%r0)                      # encoding: [0x00,0x00]
 	lea	%r0, data_unsigned(%pc)         # encoding: []
-                                        #   fixup A - offset: 0, value: data_unsigned, kind: 
+                                        #   fixup A - offset: 0, value: data_unsigned, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	st	%r1, (%r0)                      # encoding: [0x00,0x00]
@@ -71,5 +71,5 @@ data_unsigned:
 	.long	0                               # 0x0
 	.size	data_unsigned, 32
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

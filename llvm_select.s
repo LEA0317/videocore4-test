@@ -44,10 +44,10 @@ $func_end1:
 test_movx_3:                            # @test_movx_3
 # %bb.0:
 	lea	%r0, a(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: a, kind: 
+                                        #   fixup A - offset: 0, value: a, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	lea	%r0, b(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: b, kind: 
+                                        #   fixup A - offset: 0, value: b, kind: fixup_VideoCore4_32
 	ld	%r2, (%r0)                      # encoding: [0x00,0x00]
 	mov	%r3, 1                          # encoding: [0x00,0x00]
 	cmp	%r1, %r2                        # encoding: [0x00,0x00]
@@ -65,7 +65,7 @@ $func_end2:
 test_movx_4:                            # @test_movx_4
 # %bb.0:
 	lea	%r0, a(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: a, kind: 
+                                        #   fixup A - offset: 0, value: a, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	mov	%r2, 0                          # encoding: [0x00,0x00]
 	mov	%r3, 3                          # encoding: [0x00,0x00]
@@ -90,7 +90,7 @@ main:                                   # @main
 	nop                                     # encoding: []
 	nop                                     # encoding: []
 	lea	%r2, dst(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: dst, kind: 
+                                        #   fixup A - offset: 0, value: dst, kind: fixup_VideoCore4_32
 	bl	test_movx_2                     # encoding: [0x00,0x00,0x00,0x00]
 	st	%r0, (%r2)                      # encoding: [0x00,0x00]
 	nop                                     # encoding: []
@@ -136,5 +136,5 @@ dst:
 	.space	16
 	.size	dst, 16
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

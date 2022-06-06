@@ -7,7 +7,7 @@ main:                                   # @main
 # %bb.0:
 	mov	%r0, 0                          # encoding: [0x00,0x00]
 	lea	%r1, dst(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: dst, kind: 
+                                        #   fixup A - offset: 0, value: dst, kind: fixup_VideoCore4_32
 	mov	%r2, 1                          # encoding: [0x00,0x00]
 BB0_1:                                  # %loadstoreloop
                                         # =>This Inner Loop Header: Depth=1
@@ -34,5 +34,5 @@ dst:
 	.space	4096
 	.size	dst, 4096
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

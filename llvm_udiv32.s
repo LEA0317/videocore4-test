@@ -426,11 +426,11 @@ main:                                   # @main
 	sub	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r2, 0                          # encoding: [0x00,0x00]
 	lea	%r3, z(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: z, kind: 
+                                        #   fixup A - offset: 0, value: z, kind: fixup_VideoCore4_32
 	lea	%r5, d(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: d, kind: 
+                                        #   fixup A - offset: 0, value: d, kind: fixup_VideoCore4_32
 	lea	%r4, q(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: q, kind: 
+                                        #   fixup A - offset: 0, value: q, kind: fixup_VideoCore4_32
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 BB1_1:                                  # =>This Inner Loop Header: Depth=1
@@ -482,5 +482,5 @@ q:
 	.space	4096
 	.size	q, 4096
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

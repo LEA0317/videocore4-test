@@ -46,7 +46,7 @@ main:                                   # @main
                                         # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r1, 27                         # encoding: [0x00,0x00]
 	lea	%r0, p(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: p, kind: 
+                                        #   fixup A - offset: 0, value: p, kind: fixup_VideoCore4_32
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
@@ -144,5 +144,5 @@ p:
 	.long	4294967295                      # 0xffffffff
 	.size	p, 324
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

@@ -47,11 +47,11 @@ main:                                   # @main
 	st	%r7, 4 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r4, a(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: a, kind: 
+                                        #   fixup A - offset: 0, value: a, kind: fixup_VideoCore4_32
 	lea	%r5, b(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: b, kind: 
+                                        #   fixup A - offset: 0, value: b, kind: fixup_VideoCore4_32
 	lea	%r7, c(%pc)                     # encoding: []
-                                        #   fixup A - offset: 0, value: c, kind: 
+                                        #   fixup A - offset: 0, value: c, kind: fixup_VideoCore4_32
 	ld	%r0, (%r4)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
@@ -61,7 +61,7 @@ main:                                   # @main
                                         # encoding: [0x00,0x00,0x00,0x00]
 	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
 	lea	%r6, dst(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: dst, kind: 
+                                        #   fixup A - offset: 0, value: dst, kind: fixup_VideoCore4_32
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
 	st	%r0, (%r6)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
@@ -148,5 +148,5 @@ dst:
 	.space	32
 	.size	dst, 32
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

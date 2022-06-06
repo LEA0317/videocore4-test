@@ -85,14 +85,14 @@ main:                                   # @main
 # %bb.0:
 	sub	%sp, 4                          # encoding: [0x00,0x00]
 	lea	%r0, res(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: res, kind: 
+                                        #   fixup A - offset: 0, value: res, kind: fixup_VideoCore4_32
 	bl	test_basic_ops                  # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r2, rhs(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: rhs, kind: 
+                                        #   fixup A - offset: 0, value: rhs, kind: fixup_VideoCore4_32
 	lea	%r1, lhs(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: lhs, kind: 
+                                        #   fixup A - offset: 0, value: lhs, kind: fixup_VideoCore4_32
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
@@ -124,5 +124,5 @@ res:
 	.space	56
 	.size	res, 56
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

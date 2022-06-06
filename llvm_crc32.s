@@ -7,7 +7,7 @@ make_crc_table:                         # @make_crc_table
 # %bb.0:
 	mov	%r0, 0                          # encoding: [0x00,0x00]
 	lea	%r1, crc_table(%pc)             # encoding: []
-                                        #   fixup A - offset: 0, value: crc_table, kind: 
+                                        #   fixup A - offset: 0, value: crc_table, kind: fixup_VideoCore4_32
 	mov	%r2, %r0                        # encoding: [0x00,0x00]
 BB0_1:                                  # =>This Inner Loop Header: Depth=1
 	mov	%r3, %r2                        # encoding: [0x00,0x00]
@@ -96,7 +96,7 @@ crc32:                                  # @crc32
                                         # implicit-def: $r5
 	b	BB1_4                           # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r4, crc_table(%pc)             # encoding: []
-                                        #   fixup A - offset: 0, value: crc_table, kind: 
+                                        #   fixup A - offset: 0, value: crc_table, kind: fixup_VideoCore4_32
 	mov	%r2, -1                         # encoding: []
 	nop                                     # encoding: []
 BB1_6:                                  #   in Loop: Header=BB1_4 Depth=1
@@ -162,15 +162,15 @@ main:                                   # @main
 	nop                                     # encoding: []
 	nop                                     # encoding: []
 	lea	%r0, len(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: len, kind: 
+                                        #   fixup A - offset: 0, value: len, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	bl	crc32                           # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r0, data(%pc)                  # encoding: []
-                                        #   fixup A - offset: 0, value: data, kind: 
+                                        #   fixup A - offset: 0, value: data, kind: fixup_VideoCore4_32
 	nop                                     # encoding: []
 	nop                                     # encoding: []
 	lea	%r2, retval(%pc)                # encoding: []
-                                        #   fixup A - offset: 0, value: retval, kind: 
+                                        #   fixup A - offset: 0, value: retval, kind: fixup_VideoCore4_32
 	mov	%r1, 0                          # encoding: [0x00,0x00]
 	st	%r0, (%r2)                      # encoding: [0x00,0x00]
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
@@ -211,5 +211,5 @@ retval:
 	.long	0                               # 0x0
 	.size	retval, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits

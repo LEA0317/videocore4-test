@@ -36,7 +36,7 @@ $func_end0:
 main:                                   # @main
 # %bb.0:
 	lea	%r0, src(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: src, kind: 
+                                        #   fixup A - offset: 0, value: src, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	cmp	%r1, 0                          # encoding: []
 	beq	BB1_3                           # encoding: [0x00,0x00,0x00,0x00]
@@ -55,7 +55,7 @@ BB1_2:                                  # =>This Inner Loop Header: Depth=1
 	nop                                     # encoding: []
 BB1_3:
 	lea	%r1, dst(%pc)                   # encoding: []
-                                        #   fixup A - offset: 0, value: dst, kind: 
+                                        #   fixup A - offset: 0, value: dst, kind: fixup_VideoCore4_32
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	st	%r0, (%r1)                      # encoding: [0x00,0x00]
 	nop                                     # encoding: []
@@ -78,5 +78,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e68e48c7ddc8430a292b5860c720de83a1537436)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 0c5aa99f213e9d9a18ace24961961f066116025b)"
 	.section	".note.GNU-stack","",@progbits
