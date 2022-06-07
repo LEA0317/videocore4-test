@@ -24,16 +24,16 @@ BB0_1:                                  # =>This Inner Loop Header: Depth=1
 	cmp	%r0, 400                        # encoding: []
 	bne	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
 	st	%r5, (%r4)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.2:
 	mov	%r0, 0                          # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 1200                       # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	main, ($func_end0)-main
                                         # -- End function
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits

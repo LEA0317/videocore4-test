@@ -8,8 +8,8 @@ _Z14recursive_facti:                    # @_Z14recursive_facti
 	cmp	%r0, 0                          # encoding: []
 	beq	BB0_3                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r1, 1                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.1:                                # %.preheader
 	mov	%r3, 1                          # encoding: [0x00,0x00]
 	mov	%r2, %r0                        # encoding: [0x00,0x00]
@@ -21,12 +21,12 @@ BB0_2:                                  # =>This Inner Loop Header: Depth=1
 	bne	BB0_2                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r3, %r1                        # encoding: [0x00,0x00]
 	mov	%r0, %r2                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
 BB0_3:
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	_Z14recursive_facti, ($func_end0)-_Z14recursive_facti
                                         # -- End function
@@ -41,8 +41,8 @@ main:                                   # @main
 	cmp	%r1, 0                          # encoding: []
 	beq	BB1_3                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, 1                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.1:                                # %.preheader
 	mov	%r0, 1                          # encoding: [0x00,0x00]
 BB1_2:                                  # =>This Inner Loop Header: Depth=1
@@ -50,16 +50,16 @@ BB1_2:                                  # =>This Inner Loop Header: Depth=1
 	add	%r1, -1                         # encoding: [0x00,0x00]
 	cmp	%r1, 0                          # encoding: []
 	bne	BB1_2                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 BB1_3:
 	lea	%r1, dst(%pc)                   # encoding: []
                                         #   fixup A - offset: 0, value: dst, kind: fixup_VideoCore4_32
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	st	%r0, (%r1)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -78,5 +78,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits

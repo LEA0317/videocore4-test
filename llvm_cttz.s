@@ -14,20 +14,20 @@ BB0_1:                                  # =>This Inner Loop Header: Depth=1
 	add	%r2, -1                         # encoding: [0x00,0x00]
 	not	%r3, %r3                        # encoding: [0x00,0x00]
 	and	%r3, %r2                        # encoding: [0x00,0x00]
-	clz	%r2, %r3                        # encoding: []
+	clz	%r2, %r3                        # encoding: [0x00,0x00,0x00,0x00]
 	rsub	%r2, 32                         # encoding: [0x00,0x00]
 	add	%r0, 1                          # encoding: [0x00,0x00]
 	st	%r2, (%r1)                      # encoding: [0x00,0x00]
 	cmp	%r0, 4096                       # encoding: []
 	bne	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
 	add	%r1, 4                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.2:
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, 0                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	main, ($func_end0)-main
                                         # -- End function
@@ -39,5 +39,5 @@ dst:
 	.space	16384
 	.size	dst, 16384
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits

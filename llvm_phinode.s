@@ -8,19 +8,19 @@ llvm_phinode:                           # @llvm_phinode
 	cmp	%r0, 0                          # encoding: []
 	beq	BB0_5                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r3, 1                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.1:
 	cmp	%r1, 0                          # encoding: []
 	beq	BB0_3                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.2:
 	b	BB0_4                           # encoding: [0x00,0x00,0x00,0x00]
 	add	%r0, -1                         # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 BB0_3:
 	mov	%r3, %r0                        # encoding: [0x00,0x00]
 	mov	%r4, 0                          # encoding: [0x00,0x00]
@@ -33,8 +33,8 @@ BB0_5:
 	add	%r3, %r1                        # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	llvm_phinode, ($func_end0)-llvm_phinode
                                         # -- End function
@@ -43,79 +43,71 @@ $func_end0:
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	sub	%sp, 12                         # encoding: [0x00,0x00]
-	st	%r7, 4 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r4, a(%pc)                     # encoding: []
                                         #   fixup A - offset: 0, value: a, kind: fixup_VideoCore4_32
 	lea	%r5, b(%pc)                     # encoding: []
                                         #   fixup A - offset: 0, value: b, kind: fixup_VideoCore4_32
-	lea	%r7, c(%pc)                     # encoding: []
+	lea	%r9, c(%pc)                     # encoding: []
                                         #   fixup A - offset: 0, value: c, kind: fixup_VideoCore4_32
+	sub	%sp, 4                          # encoding: [0x00,0x00]
 	ld	%r0, (%r4)                      # encoding: [0x00,0x00]
-	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
-	st	%r6, 8 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
-	lea	%r6, dst(%pc)                   # encoding: []
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
+	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
+	lea	%r8, dst(%pc)                   # encoding: []
                                         #   fixup A - offset: 0, value: dst, kind: fixup_VideoCore4_32
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	ld	%r3, (%r4)                      # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	bl	llvm_phinode                    # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	ld	%r2, (%r7)                      # encoding: [0x00,0x00]
+	ld	%r2, (%r9)                      # encoding: [0x00,0x00]
 	ld	%r1, (%r5)                      # encoding: [0x00,0x00]
 	mov	%r1, 0                          # encoding: [0x00,0x00]
-	st	%r0, (%r6)                      # encoding: [0x00,0x00]
+	st	%r0, (%r8)                      # encoding: [0x00,0x00]
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
-	ld	%r7, 4 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
-	ld	%r6, 8 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
-	add	%sp, 12                         # encoding: [0x00,0x00]
+	add	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -148,5 +140,5 @@ dst:
 	.space	32
 	.size	dst, 32
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits

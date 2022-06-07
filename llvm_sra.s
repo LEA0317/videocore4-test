@@ -7,9 +7,9 @@ _sra:                                   # @_sra
 # %bb.0:
 	cmp	%r1, 0                          # encoding: []
 	bne	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.1:                                # %.preheader
 	add	%r0, 8                          # encoding: [0x00,0x00]
 BB0_2:                                  # =>This Inner Loop Header: Depth=1
@@ -25,13 +25,13 @@ BB0_2:                                  # =>This Inner Loop Header: Depth=1
 	cmp	%r1, 0                          # encoding: []
 	bne	BB0_2                           # encoding: [0x00,0x00,0x00,0x00]
 	add	%r0, 12                         # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 BB0_3:
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	_sra, ($func_end0)-_sra
                                         # -- End function
@@ -52,7 +52,7 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r0, 0                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -144,5 +144,5 @@ p:
 	.long	4294967295                      # 0xffffffff
 	.size	p, 324
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits

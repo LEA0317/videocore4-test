@@ -64,13 +64,13 @@ BB0_1:                                  # =>This Inner Loop Header: Depth=1
 	cmp	%r2, 256                        # encoding: []
 	bne	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
 	add	%r1, 4                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.2:
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	make_crc_table, ($func_end0)-make_crc_table
                                         # -- End function
@@ -79,18 +79,15 @@ $func_end0:
 	.type	crc32,@function
 crc32:                                  # @crc32
 # %bb.0:
-	sub	%sp, 8                          # encoding: [0x00,0x00]
 	cmp	%r1, 0                          # encoding: []
 	beq	BB1_2                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r2, 0                          # encoding: [0x00,0x00]
-	st	%r7, 0 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
-	st	%r6, 4 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 	b	BB1_3                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.3:                                # %.preheader
 	mov	%r3, 0                          # encoding: [0x00,0x00]
                                         # implicit-def: $r5
@@ -98,55 +95,50 @@ crc32:                                  # @crc32
 	lea	%r4, crc_table(%pc)             # encoding: []
                                         #   fixup A - offset: 0, value: crc_table, kind: fixup_VideoCore4_32
 	mov	%r2, -1                         # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
 BB1_6:                                  #   in Loop: Header=BB1_4 Depth=1
-	lsl	%r6, 3                          # encoding: [0x00,0x00]
-	mov	%r7, %r5                        # encoding: [0x00,0x00]
-	lsr	%r7, %r6                        # encoding: [0x00,0x00]
-	eor	%r7, %r2                        # encoding: [0x00,0x00]
-	and	%r7, 255                        # encoding: [0x00,0x00]
-	ld	%r6, (%r4, %r7)                 # encoding: [0x00,0x00,0x00,0x00]
-	mov	%r7, %r2                        # encoding: [0x00,0x00]
+	lsl	%r8, 3                          # encoding: [0x00,0x00]
+	mov	%r9, %r5                        # encoding: [0x00,0x00]
+	lsr	%r9, %r8                        # encoding: [0x00,0x00]
+	eor	%r9, %r2                        # encoding: [0x00,0x00]
+	and	%r9, 255                        # encoding: [0x00,0x00]
+	ld	%r8, (%r4, %r9)                 # encoding: [0x00,0x00,0x00,0x00]
+	mov	%r9, %r2                        # encoding: [0x00,0x00]
 	add	%r3, 1                          # encoding: [0x00,0x00]
 	cmp	%r1, %r3                        # encoding: [0x00,0x00]
-	lsr	%r7, 8                          # encoding: [0x00,0x00]
-	mov	%r2, %r6                        # encoding: [0x00,0x00]
+	lsr	%r9, 8                          # encoding: [0x00,0x00]
+	mov	%r2, %r8                        # encoding: [0x00,0x00]
 	beq	BB1_1                           # encoding: [0x00,0x00,0x00,0x00]
-	eor	%r2, %r7                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	eor	%r2, %r9                        # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 	b	BB1_4                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 BB1_4:                                  # =>This Inner Loop Header: Depth=1
-	and	%r6, %r3, 3                     # encoding: [0x00,0x00,0x00,0x00]
-	cmp	%r6, 0                          # encoding: []
+	and	%r8, %r3, 3                     # encoding: [0x00,0x00,0x00,0x00]
+	cmp	%r8, 0                          # encoding: []
 	bne	BB1_6                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
 	mov	%r5, %r3                        # encoding: [0x00,0x00]
 	and	%r5, -4                         # encoding: [0x00,0x00]
-	mov	%r7, %r0                        # encoding: [0x00,0x00]
-	add	%r7, %r5                        # encoding: [0x00,0x00]
+	mov	%r9, %r0                        # encoding: [0x00,0x00]
+	add	%r9, %r5                        # encoding: [0x00,0x00]
 	b	BB1_6                           # encoding: [0x00,0x00,0x00,0x00]
-	ld	%r5, (%r7)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	ld	%r5, (%r9)                      # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 BB1_1:
 	not	%r2, %r2                        # encoding: [0x00,0x00]
 BB1_2:
-	mov	%r0, %r2                        # encoding: [0x00,0x00]
-	ld	%r7, 0 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
-	ld	%r6, 4 (%sp)                    # 4-byte Folded Spill
-                                        # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
-	add	%sp, 8                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	mov	%r0, %r2                        # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end1:
 	.size	crc32, ($func_end1)-crc32
                                         # -- End function
@@ -159,16 +151,16 @@ main:                                   # @main
 	bl	make_crc_table                  # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 	lea	%r0, len(%pc)                   # encoding: []
                                         #   fixup A - offset: 0, value: len, kind: fixup_VideoCore4_32
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	bl	crc32                           # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r0, data(%pc)                  # encoding: []
                                         #   fixup A - offset: 0, value: data, kind: fixup_VideoCore4_32
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 	lea	%r2, retval(%pc)                # encoding: []
                                         #   fixup A - offset: 0, value: retval, kind: fixup_VideoCore4_32
 	mov	%r1, 0                          # encoding: [0x00,0x00]
@@ -178,7 +170,7 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
 $func_end2:
 	.size	main, ($func_end2)-main
                                         # -- End function
@@ -211,5 +203,5 @@ retval:
 	.long	0                               # 0x0
 	.size	retval, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits

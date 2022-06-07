@@ -14,8 +14,8 @@ assignment:                             # @assignment
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	st	%r1, (%r0)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 $func_end0:
 	.size	assignment, ($func_end0)-assignment
                                         # -- End function
@@ -28,14 +28,14 @@ main:                                   # @main
 	bl	assignment                      # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: [0x00,0x00]
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r0, 0                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x00,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -71,5 +71,5 @@ data_unsigned:
 	.long	0                               # 0x0
 	.size	data_unsigned, 32
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d28a5df5ef26a70aaa55c7137f05c3bdd949499b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
 	.section	".note.GNU-stack","",@progbits
