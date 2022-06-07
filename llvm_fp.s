@@ -9,8 +9,8 @@ _Z4testPff:                             # @_Z4testPff
 	st	%r1, (%r0)                      # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
 $func_end0:
 	.size	_Z4testPff, ($func_end0)-_Z4testPff
                                         # -- End function
@@ -27,9 +27,9 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	ftoi	%r0, %r0                        # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
 	.section	".note.GNU-stack","",@progbits

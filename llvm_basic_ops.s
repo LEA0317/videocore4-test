@@ -74,7 +74,7 @@ test_basic_ops:                         # @test_basic_ops
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	st	%r1, 52 (%r0)                   # encoding: [0x00,0x00,0x00,0x00]
 	st	%r3, 48 (%r0)                   # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
 $func_end0:
 	.size	test_basic_ops, ($func_end0)-test_basic_ops
                                         # -- End function
@@ -98,7 +98,7 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r0, 0                          # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -124,5 +124,5 @@ res:
 	.space	56
 	.size	res, 56
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
 	.section	".note.GNU-stack","",@progbits

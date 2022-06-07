@@ -11,8 +11,8 @@ llvm_local_pointer:                     # @llvm_local_pointer
 	ld	%r0, 0 (sp)                     # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
 $func_end0:
 	.size	llvm_local_pointer, ($func_end0)-llvm_local_pointer
                                         # -- End function
@@ -25,8 +25,8 @@ main:                                   # @main
 	bl	llvm_local_pointer              # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
+	nop                                     # encoding: []
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r1, dst(%pc)                   # encoding: []
@@ -34,7 +34,7 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	st	%r0, (%r1)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: [0x00,0x00]
+	nop                                     # encoding: []
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -46,5 +46,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git d51add13ce4a9d92350f1e5ee9df19f168eab68a)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
 	.section	".note.GNU-stack","",@progbits
