@@ -15,14 +15,14 @@ BB0_1:                                  # %loadstoreloop
 	add	%r0, 1                          # encoding: [0x00,0x00]
 	cmp	%r0, 4096                       # encoding: []
 	bcs	BB0_1                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 # %bb.2:                                # %split
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, 0                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 $func_end0:
 	.size	main, ($func_end0)-main
                                         # -- End function
@@ -34,5 +34,5 @@ dst:
 	.space	4096
 	.size	dst, 4096
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
 	.section	".note.GNU-stack","",@progbits

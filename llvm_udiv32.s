@@ -408,8 +408,8 @@ udiv32:                                 # @udiv32
 	movcc	%r1, 1                          # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 $func_end0:
 	.size	udiv32, ($func_end0)-udiv32
                                         # -- End function
@@ -436,22 +436,22 @@ BB1_1:                                  # =>This Inner Loop Header: Depth=1
 	bl	udiv32                          # encoding: [0x00,0x00,0x00,0x00]
 	ld	%r1, (%r1)                      # encoding: [0x00,0x00]
 	ld	%r0, (%r0)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
 	mov	%r1, %r2                        # encoding: [0x00,0x00]
 	add	%r1, %r4                        # encoding: [0x00,0x00]
 	add	%r2, 4                          # encoding: [0x00,0x00]
 	cmp	%r2, 4096                       # encoding: []
 	bne	BB1_1                           # encoding: [0x00,0x00,0x00,0x00]
 	st	%r0, (%r1)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 # %bb.2:
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	ld	%r0, (%r4)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -477,5 +477,5 @@ q:
 	.space	4096
 	.size	q, 4096
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
 	.section	".note.GNU-stack","",@progbits

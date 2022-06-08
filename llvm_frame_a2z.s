@@ -136,7 +136,7 @@ frame_a2z:                              # @frame_a2z
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 104                        # encoding: [0x00,0x00]
 	add	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
 $func_end0:
 	.size	frame_a2z, ($func_end0)-frame_a2z
                                         # -- End function
@@ -149,8 +149,8 @@ main:                                   # @main
 	bl	frame_a2z                       # encoding: [0x00,0x00,0x00,0x00]
 	st	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 	ld	%lr, 0 (%sp)                    # 4-byte Folded Spill
                                         # encoding: [0x00,0x00,0x00,0x00]
 	lea	%r1, dst(%pc)                   # encoding: []
@@ -158,7 +158,7 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	st	%r0, (%r1)                      # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -170,5 +170,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
 	.section	".note.GNU-stack","",@progbits

@@ -8,19 +8,19 @@ llvm_phinode:                           # @llvm_phinode
 	cmp	%r0, 0                          # encoding: []
 	beq	BB0_5                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r3, 1                          # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 # %bb.1:
 	cmp	%r1, 0                          # encoding: []
 	beq	BB0_3                           # encoding: [0x00,0x00,0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 # %bb.2:
 	b	BB0_4                           # encoding: [0x00,0x00,0x00,0x00]
 	add	%r0, -1                         # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 BB0_3:
 	mov	%r3, %r0                        # encoding: [0x00,0x00]
 	mov	%r4, 0                          # encoding: [0x00,0x00]
@@ -33,8 +33,8 @@ BB0_5:
 	add	%r3, %r1                        # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r0, %r3                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
+	nop                                     # encoding: [0x01,0x00]
 $func_end0:
 	.size	llvm_phinode, ($func_end0)-llvm_phinode
                                         # -- End function
@@ -107,7 +107,7 @@ main:                                   # @main
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	mov	%r0, %r1                        # encoding: [0x00,0x00]
-	nop                                     # encoding: []
+	nop                                     # encoding: [0x01,0x00]
 $func_end1:
 	.size	main, ($func_end1)-main
                                         # -- End function
@@ -140,5 +140,5 @@ dst:
 	.space	32
 	.size	dst, 32
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 890100bc0bfe3741157f10942c7a1407d46e8c5b)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
 	.section	".note.GNU-stack","",@progbits
