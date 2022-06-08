@@ -5,7 +5,7 @@
 	.type	gcd,@function
 gcd:                                    # @gcd
 # %bb.0:
-	cmp	%r0, %r1                        # encoding: [0x00,0x00]
+	cmp	%r0, %r1                        # encoding: []
 	beq	BB0_3                           # encoding: [0x00,0x00,0x00,0x00]
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
@@ -15,13 +15,13 @@ gcd:                                    # @gcd
 	mov	%r3, 0                          # encoding: [0x00,0x00]
 BB0_2:                                  # =>This Inner Loop Header: Depth=1
 	mov	%r4, %r3                        # encoding: [0x00,0x00]
-	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: []
 	movlt	%r4, %r1                        # encoding: [0x00,0x00,0x00,0x00]
-	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: []
 	movlt	%r2, %r3                        # encoding: [0x00,0x00,0x00,0x00]
 	sub	%r0, %r4                        # encoding: [0x00,0x00]
 	sub	%r1, %r2                        # encoding: [0x00,0x00]
-	cmp	%r0, %r1                        # encoding: [0x00,0x00]
+	cmp	%r0, %r1                        # encoding: []
 	bne	BB0_2                           # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r2, %r0                        # encoding: [0x00,0x00]
 	nop                                     # encoding: [0x01,0x00]
@@ -82,5 +82,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6019b5db978011ef2b9b165f188564f235ae705f)"
 	.section	".note.GNU-stack","",@progbits

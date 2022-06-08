@@ -25,7 +25,7 @@ BB0_3:
 	mov	%r3, %r0                        # encoding: [0x00,0x00]
 	mov	%r4, 0                          # encoding: [0x00,0x00]
 	add	%r3, 2                          # encoding: [0x00,0x00]
-	cmp	%r2, %r4                        # encoding: [0x00,0x00]
+	cmp	%r2, %r4                        # encoding: []
 	moveq	%r0, %r3                        # encoding: [0x00,0x00,0x00,0x00]
 BB0_4:
 	mov	%r3, %r0                        # encoding: [0x00,0x00]
@@ -140,5 +140,5 @@ dst:
 	.space	32
 	.size	dst, 32
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6019b5db978011ef2b9b165f188564f235ae705f)"
 	.section	".note.GNU-stack","",@progbits

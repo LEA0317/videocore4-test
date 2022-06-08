@@ -10,7 +10,7 @@ test_movx_1:                            # @test_movx_1
 	st	%r1, 0 (sp)                     # encoding: [0x00,0x00,0x00,0x00]
 	ld	%r2, 0 (sp)                     # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r3, 0                          # encoding: [0x00,0x00]
-	cmp	%r2, %r3                        # encoding: [0x00,0x00]
+	cmp	%r2, %r3                        # encoding: []
 	mov	%r0, 3                          # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
@@ -30,7 +30,7 @@ test_movx_2:                            # @test_movx_2
 	ld	%r1, 0 (sp)                     # encoding: [0x00,0x00,0x00,0x00]
 	mov	%r2, 0                          # encoding: [0x00,0x00]
 	mov	%r3, 3                          # encoding: [0x00,0x00]
-	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: []
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
 	moveq	%r0, %r3                        # encoding: [0x00,0x00,0x00,0x00]
@@ -50,7 +50,7 @@ test_movx_3:                            # @test_movx_3
                                         #   fixup A - offset: 0, value: b, kind: fixup_VideoCore4_32
 	ld	%r2, (%r0)                      # encoding: [0x00,0x00]
 	mov	%r3, 1                          # encoding: [0x00,0x00]
-	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: []
 	mov	%r0, 2                          # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	movlt	%r0, %r3                        # encoding: [0x00,0x00,0x00,0x00]
@@ -69,7 +69,7 @@ test_movx_4:                            # @test_movx_4
 	ld	%r1, (%r0)                      # encoding: [0x00,0x00]
 	mov	%r2, 0                          # encoding: [0x00,0x00]
 	mov	%r3, 3                          # encoding: [0x00,0x00]
-	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: []
 	mov	%r0, 1                          # encoding: [0x00,0x00]
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	moveq	%r0, %r3                        # encoding: [0x00,0x00,0x00,0x00]
@@ -136,5 +136,5 @@ dst:
 	.space	16
 	.size	dst, 16
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6019b5db978011ef2b9b165f188564f235ae705f)"
 	.section	".note.GNU-stack","",@progbits

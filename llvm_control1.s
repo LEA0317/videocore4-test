@@ -12,17 +12,17 @@ llvm_control1:                          # @llvm_control1
 	mov	%r0, %r1                        # encoding: [0x00,0x00]
 	add	%r0, 5                          # encoding: [0x00,0x00]
 	mov	%r2, 10                         # encoding: [0x00,0x00]
-	cmp	%r0, %r2                        # encoding: [0x00,0x00]
+	cmp	%r0, %r2                        # encoding: []
 	movhi	%r2, %r0                        # encoding: [0x00,0x00,0x00,0x00]
 	sub	%r2, %r1                        # encoding: [0x00,0x00]
 	add	%r2, -5                         # encoding: [0x00,0x00]
 	mov	%r0, 98                         # encoding: []
-	cmp	%r2, %r0                        # encoding: [0x00,0x00]
+	cmp	%r2, %r0                        # encoding: []
 	movcs	%r0, %r2                        # encoding: [0x00,0x00,0x00,0x00]
 	add	%r1, %r0                        # encoding: [0x00,0x00]
 	mov	%r2, 5                          # encoding: [0x00,0x00]
 	mov	%r3, 51                         # encoding: []
-	cmp	%r1, %r2                        # encoding: [0x00,0x00]
+	cmp	%r1, %r2                        # encoding: []
 	mov	%r0, 40                         # encoding: []
 	b	%lr                             # encoding: [0x00,0x00,0x00,0x00]
 	add	%sp, 4                          # encoding: [0x00,0x00]
@@ -61,5 +61,5 @@ dst:
 	.long	0                               # 0x0
 	.size	dst, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 2a8ef723fa2eab0b32263242255f6d44411428b6)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6019b5db978011ef2b9b165f188564f235ae705f)"
 	.section	".note.GNU-stack","",@progbits
