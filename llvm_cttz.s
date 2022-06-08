@@ -14,8 +14,7 @@ BB0_1:                                  # =>This Inner Loop Header: Depth=1
 	add	%r2, -1                         # encoding: [0x00,0x00]
 	not	%r3, %r3                        # encoding: [0x00,0x00]
 	and	%r3, %r2                        # encoding: [0x00,0x00]
-	clz	%r2, %r3                        # encoding: [0x00,0x00,0x00,0x00]
-	rsub	%r2, 32                         # encoding: [0x00,0x00]
+	count	%r2, %r3                        # encoding: []
 	add	%r0, 1                          # encoding: [0x00,0x00]
 	st	%r2, (%r1)                      # encoding: [0x00,0x00]
 	cmp	%r0, 4096                       # encoding: []
@@ -39,5 +38,5 @@ dst:
 	.space	16384
 	.size	dst, 16384
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6019b5db978011ef2b9b165f188564f235ae705f)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6747012bd480206fb4fd8228ad920867f814965d)"
 	.section	".note.GNU-stack","",@progbits
