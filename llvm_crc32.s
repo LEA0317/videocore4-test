@@ -84,14 +84,14 @@ crc32:                                  # @crc32
 	mov	%r2, 0                          # encoding: [0x00,0x00]
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
-	b	BB1_3                           # encoding: [0x00,0x00,0x00,0x00]
+	j	BB1_3                           # encoding: []
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
 # %bb.3:                                # %.preheader
 	mov	%r3, 0                          # encoding: [0x00,0x00]
                                         # implicit-def: $r5
-	b	BB1_4                           # encoding: [0x00,0x00,0x00,0x00]
+	j	BB1_4                           # encoding: []
 	lea	%r4, crc_table(%pc)             # encoding: []
                                         #   fixup A - offset: 0, value: crc_table, kind: fixup_VideoCore4_32
 	mov	%r2, -1                         # encoding: []
@@ -112,7 +112,7 @@ BB1_6:                                  #   in Loop: Header=BB1_4 Depth=1
 	eor	%r2, %r9                        # encoding: [0x00,0x00]
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
-	b	BB1_4                           # encoding: [0x00,0x00,0x00,0x00]
+	j	BB1_4                           # encoding: []
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
@@ -128,7 +128,7 @@ BB1_4:                                  # =>This Inner Loop Header: Depth=1
 	and	%r5, -4                         # encoding: [0x00,0x00]
 	mov	%r9, %r0                        # encoding: [0x00,0x00]
 	add	%r9, %r5                        # encoding: [0x00,0x00]
-	b	BB1_6                           # encoding: [0x00,0x00,0x00,0x00]
+	j	BB1_6                           # encoding: []
 	ld	%r5, (%r9)                      # encoding: [0x00,0x00]
 	nop                                     # encoding: [0x01,0x00]
 	nop                                     # encoding: [0x01,0x00]
@@ -203,5 +203,5 @@ retval:
 	.long	0                               # 0x0
 	.size	retval, 4
 
-	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git 6747012bd480206fb4fd8228ad920867f814965d)"
+	.ident	"clang version 14.0.4 (git@github.com:LEA0317/LLVM-VideoCore4.git e54ebb04a7d302d92a06e6eca0edc0d7af9c13f7)"
 	.section	".note.GNU-stack","",@progbits
